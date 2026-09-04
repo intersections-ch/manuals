@@ -12,5 +12,12 @@
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
   mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
-  window.addEventListener('site:mermaid-ready', (e) => mermaid.run({ nodes: e.detail }));
+
+  const render = (nodes) => { if (nodes && nodes.length) mermaid.run({ nodes }); };
+
+  // site.js runs first (deferred classic beats a module waiting on a network
+  // import), so drain whatever it already queued, then listen for late arrivals.
+  render(window.__mermaidQueue);
+  window.__mermaidQueue = [];
+  window.addEventListener('site:mermaid-ready', (e) => render(e.detail));
 </script>

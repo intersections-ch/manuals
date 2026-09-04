@@ -29,6 +29,10 @@
       nodes.push(pre);
     });
     if (nodes.length) {
+      // The mermaid module can't register its listener until its CDN import
+      // resolves, which is always after this deferred script runs — so leave the
+      // nodes in a queue as well and let whichever arrives second drain it.
+      window.__mermaidQueue = (window.__mermaidQueue || []).concat(nodes);
       window.dispatchEvent(new CustomEvent("site:mermaid-ready", { detail: nodes }));
     }
   }
