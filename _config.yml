@@ -1,7 +1,7 @@
 title: Intersections — Manuals
 description: Installation manuals for the course
 # baseurl: set to "/<repo-name>" when hosted at user.github.io/<repo-name>
-baseurl: ""
+baseurl: "/manuals"
 
 defaults:
   - scope:

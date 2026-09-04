@@ -1,5 +1,6 @@
 ---
 title: Manuals
+permalink: /
 ---
 
 # Manuals
