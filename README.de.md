@@ -1,0 +1,40 @@
+---
+title: Manuals
+lang: de
+permalink: /de/
+---
+
+# Manuals
+
+**Language:** [English](README.md)
+
+Neu hier? Fang mit [Basis-Setup](manuals/basic-setup.de.md) an — es führt der Reihe nach durch die anderen Manuals.
+Sonst nimm eins, arbeite es durch und probier die Sachen am Ende aus. Früh fertig? Nimm das nächste.
+Hängen geblieben? Frag Claude — Fehlermeldung reinkopieren, meistens weiss es weiter.
+
+| Manual | Was du bekommst | Voraussetzungen |
+|---|---|---|
+| [Basis-Setup](manuals/basic-setup.de.md) | Die ganze Kursumgebung, der Reihe nach | – |
+| [Claude Sandbox](manuals/claude-sandbox.de.md) | Claude Code in einer isolierten Docker-Box | Docker |
+| [Git-Repo-Zugang](manuals/git-repo.de.md) | SSH-Key + das Kurs-Repo auf deiner Maschine | – |
+| [n8n auf Docker](manuals/n8n-docker.de.md) | Lokaler Automatisierungsserver | Docker |
+| [Claude ↔ n8n (MCP)](manuals/claude-mcp-n8n.de.md) | Claude spricht mit deinem n8n | n8n, Claude Sandbox |
+| [Ollama](manuals/ollama.de.md) | Lokale LLMs auf deiner Maschine | – |
+
+## Reihenfolge
+
+```mermaid
+graph LR
+  setup[Basis-Setup] --> sbx[Claude Sandbox]
+  setup --> git[Git-Repo-Zugang]
+  setup --> n8n[n8n auf Docker]
+  sbx --> mcp[Claude ↔ n8n]
+  n8n --> mcp
+  docker[Docker] --> sbx
+  docker --> n8n
+  ollama[Ollama]
+```
+
+Git, ein Terminal und ein Code-Editor werden vorausgesetzt. Docker nicht — siehe die Notiz oben in jedem Manual, das es braucht.
+
+Jedes Manual hat einen deutschen Zwilling unter `<slug>.de.md`, verlinkt in der Kopfzeile jeder Seite.

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ page.lang | default: 'en' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +9,9 @@
 </head>
 <body>
   <header class="site-header">
-    <a href="{{ '/' | relative_url }}" class="logo"><img src="{{ '/assets/logo.png' | relative_url }}" alt="intersections"></a>
+    <a href="{% if page.lang == 'de' %}{{ '/de/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" class="logo"><img src="{{ '/assets/logo.png' | relative_url }}" alt="intersections"></a>
     <nav>
-      <a href="{{ '/' | relative_url }}">Manuals</a>
+      {% if page.lang == 'de' %}<a href="{{ '/de/' | relative_url }}">Manuals</a>{% else %}<a href="{{ '/' | relative_url }}">Manuals</a>{% endif %}
     </nav>
   </header>
 

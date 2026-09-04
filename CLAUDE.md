@@ -7,14 +7,19 @@ Technical participants. Give commands, not explanations of terminals. Brevity al
 
 ## Manual template (`manuals/<slug>.md`)
 
-```markdown
+Every manual is a pair: `manuals/<slug>.md` (English) and `manuals/<slug>.de.md` (German).
+Same headings, same commands, same order — only the prose is translated. Each links to the other
+on the Requires line. `lang:` in the front matter drives `<html lang>` and the header nav.
+
+````markdown
 ---
 title: <Name>
+lang: en
 ---
 
 # <Name>
 
-> **Requires:** [<Manual>](<slug>.md) · or "nothing" · (git/terminal/editor are assumed, Docker is not)
+> **Requires:** [<Manual>](<slug>.md) · or "nothing" · (git/terminal/editor are assumed, Docker is not) · **Sprache:** [Deutsch](<slug>.de.md)
 
 One or two sentences: what this is and why we install it.
 
@@ -43,13 +48,25 @@ One command that proves it works, and what the output should look like.
 
 ## Common problems
 Only if they exist. Error → fix. Max 3.
+````
+
+The German twin uses `lang: de`, German headings (`Installation`, `Prüfen`, `Ausprobieren`,
+`Typische Probleme`), links to German siblings, and swaps the header link:
+
+```markdown
+> **Voraussetzungen:** [<Manual>](<slug>.de.md) · **Language:** [English](<slug>.md)
 ```
+
+German is informal (*du*) and Swiss (`ss`, never `ß`).
 
 ## Rules
 - OS sections always in the order macOS, Windows, Linux. If a step is identical on all, write it once before the OS sections.
 - Commands in fenced blocks, one command per line, no `$` prompt prefix.
 - No "last verified" dates, no changelogs.
-- New manual → also add a row to the table in `README.md` and a node to the Mermaid graph if it has dependencies.
+- New manual → write both `<slug>.md` and `<slug>.de.md`, and add a row to the table in **both**
+  `README.md` and `README.de.md` (plus a node to each Mermaid graph if it has dependencies).
+- Unverified facts stay in the source as `<!-- #TODO ... -->` so they are greppable
+  (`grep -rn '#TODO' manuals README*.md`) but invisible on the rendered page. Mirror them into the German twin.
 - Use `> ` blockquote only for the Requires line and short warnings. Use `<mark>` sparingly for the one word that matters.
 
 ## Design

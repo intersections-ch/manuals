@@ -2,7 +2,7 @@
    DESIGN TOKENS — edit these, everything else follows.
    =========================================================== */
 :root {
-  --bg:        #fcf1db;   /* near-white, a whisper of beige */
+  --bg:        #eeeeee;   /* near-white, a whisper of beige */
   --surface:   #f6f4ef;   /* code blocks, callouts */
   --text:      #111111;
   --muted:     #6b6b6b;
