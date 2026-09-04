@@ -1,0 +1,63 @@
+---
+layout: default
+body_class: is-manual
+---
+{%- assign lang = page.lang | default: 'en' -%}
+{%- assign t = site.data.ui[lang] -%}
+{%- assign items = site.data.manuals -%}
+{%- if lang == 'de' -%}{%- assign home = '/de/' -%}{%- else -%}{%- assign home = '/' -%}{%- endif -%}
+{%- assign cur = 0 -%}
+{%- for m in items -%}{%- if m.slug == page.slug -%}{%- assign cur = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- assign pi = cur | minus: 1 -%}
+{%- assign ni = cur | plus: 1 -%}
+
+<div class="manual-shell">
+  <aside class="sidebar">
+    <details class="sidebar-collapse" open>
+      <summary>{{ t.contents }}</summary>
+      <nav class="toc" data-toc hidden>
+        <div class="side-label">{{ t.on_this_page }}</div>
+        <div class="toc-list"></div>
+      </nav>
+      <nav class="side-manuals">
+        <div class="side-label">{{ t.all_manuals }}</div>
+        <ul>
+          {%- for m in items -%}
+          {%- if lang == 'de' -%}{%- assign u = '/manuals/' | append: m.slug | append: '.de.html' -%}
+          {%- else -%}{%- assign u = '/manuals/' | append: m.slug | append: '.html' -%}{%- endif -%}
+          <li><a href="{{ u | relative_url }}"{% if m.slug == page.slug %} class="is-current" aria-current="page"{% endif %}>{{ m[lang].title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </details>
+  </aside>
+
+  <article class="article">
+    <nav class="breadcrumb">
+      <a href="{{ home | relative_url }}">{{ t.breadcrumb_root }}</a>
+      <span class="sep">/</span>
+      <span class="here">{{ page.title }}</span>
+    </nav>
+
+    <div class="manual-body{% if page.steps %} is-stepped{% endif %}" data-manual-body>
+      {{ content }}
+    </div>
+
+    <nav class="pagenav">
+      {%- if cur > 0 -%}
+        {%- assign pm = items[pi] -%}
+        {%- if lang == 'de' -%}{%- assign pu = '/manuals/' | append: pm.slug | append: '.de.html' -%}
+        {%- else -%}{%- assign pu = '/manuals/' | append: pm.slug | append: '.html' -%}{%- endif -%}
+        <a class="pagenav-prev" href="{{ pu | relative_url }}"><span class="side-label">← {{ t.prev }}</span><span class="pagenav-title">{{ pm[lang].title }}</span></a>
+      {%- else -%}
+        <a class="pagenav-prev" href="{{ home | relative_url }}"><span class="side-label">← {{ t.prev }}</span><span class="pagenav-title">{{ t.breadcrumb_root }}</span></a>
+      {%- endif -%}
+      {%- if ni < items.size -%}
+        {%- assign nm = items[ni] -%}
+        {%- if lang == 'de' -%}{%- assign nu = '/manuals/' | append: nm.slug | append: '.de.html' -%}
+        {%- else -%}{%- assign nu = '/manuals/' | append: nm.slug | append: '.html' -%}{%- endif -%}
+        <a class="pagenav-next" href="{{ nu | relative_url }}"><span class="side-label">{{ t.next }} →</span><span class="pagenav-title">{{ nm[lang].title }}</span></a>
+      {%- endif -%}
+    </nav>
+  </article>
+</div>

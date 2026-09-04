@@ -3,13 +3,40 @@ description: Installation manuals for the course
 # baseurl: set to "/<repo-name>" when hosted at user.github.io/<repo-name>
 baseurl: "/manuals"
 
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+
+sass:
+  style: compressed
+
 defaults:
   - scope:
       path: ""
     values:
       layout: default
+  - scope:
+      path: "manuals"
+    values:
+      layout: manual
 
 exclude:
   - CLAUDE.md
   - .claude
+  - README.md
+  - README.de.md
   - README-dev.md
+  - design
+  - scripts
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -1,0 +1,31 @@
+// ===========================================================
+// DESIGN TOKENS — edit these, everything else follows.
+// ===========================================================
+:root {
+  --bg:        #f7f6f4;  // page
+  --bg-sunk:   #f2f1ee;  // sidebar, note boxes
+  --surface:   #fdfcfb;  // cards
+  --ink:       #121315;  // headings
+  --ink-body:  #2c2d2f;  // prose
+  --ink-mute:  #55534f;  // secondary
+  --ink-faint: #8b8884;  // labels, monospace eyebrows
+  --line:      #dedbd6;  // hairlines
+  --line-soft: #e0ddd8;
+  --rule:      #d8d5d0;  // under h2
+  --rail:      #ddd9d4;  // step connector
+  --dark:      #17181a;  // header, footer, code, step badges
+  --dark-deep: #101113;  // code block title bar
+  --dark-line: #2c2e32;  // dividers on dark
+  --on-dark:   #f7f6f4;
+  --on-dark-mute: #8d8b87;
+  --accent-yellow: #f0e15c;
+  --accent-pink:   #e9a3bd;
+  --accent-peach:  #ffd9b8;
+  --gradient: linear-gradient(90deg, var(--accent-pink), var(--accent-peach), var(--accent-yellow));
+
+  --font:  'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --shell: 1240px;
+  --measure: 72ch;
+  --radius: 10px;
+}

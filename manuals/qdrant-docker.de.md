@@ -1,6 +1,7 @@
 ---
 title: Qdrant auf Docker
 lang: de
+slug: qdrant-docker
 ---
 
 # Qdrant auf Docker

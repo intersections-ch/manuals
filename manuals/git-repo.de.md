@@ -1,6 +1,7 @@
 ---
 title: Git-Repo-Zugang
 lang: de
+slug: git-repo
 ---
 
 # Git-Repo-Zugang
@@ -9,7 +10,7 @@ lang: de
 
 Ein SSH-Key auf deiner Maschine, registriert bei Azure DevOps, damit du dein Kurs-Repo klonen und zurückpushen kannst.
 
-> Jede URL hier unten ist ein <mark>Platzhalter</mark>. Du bekommst dein eigenes Repo — benannt nach dir oder einem Kürzel, das du erhältst — am Morgen des Kurstags. Setz die URL ein, die du bekommst, für `<org>`, `<project>` und `<repo-name>`; rate sie nicht.
+> **Achtung:** jede URL hier unten ist ein <mark>Platzhalter</mark>. Du bekommst dein eigenes Repo — benannt nach dir oder einem Kürzel, das du erhältst — am Morgen des Kurstags. Setz die URL ein, die du bekommst, für `<org>`, `<project>` und `<repo-name>`; rate sie nicht.
 
 Der Kurs läuft auf **Azure DevOps**. Die GitHub-Befehle stehen trotzdem hier, weil du sie beim ersten Klon von irgendetwas anderem brauchen wirst.
 

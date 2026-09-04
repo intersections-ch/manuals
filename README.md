@@ -16,14 +16,14 @@ Stuck? Ask Claude — paste the error, it usually knows. Still stuck? Ask one of
 
 | Manual | What you get | Requires |
 |---|---|---|
-| [Basic Setup](manuals/basic-setup.md) | The whole course environment, in order | – |
+| [Basic Setup](manuals/basic-setup.md) | The whole course environment, in order | — |
 | [Claude Sandbox](manuals/claude-sandbox.md) | Claude Code in an isolated Docker box | Docker |
-| [Git Repo Access](manuals/git-repo.md) | SSH key + the course repo on your machine | – |
+| [Git Repo Access](manuals/git-repo.md) | SSH key + the course repo on your machine | — |
 | [Qdrant on Docker](manuals/qdrant-docker.md) | Local vector database | Docker, Ollama |
 | [n8n on Docker](manuals/n8n-docker.md) | Local automation server | Docker, Qdrant |
 | [RAG in n8n](manuals/n8n-rag.md) | Two workflows: a chat agent with a memory | Qdrant, n8n |
 | [Claude ↔ n8n (MCP)](manuals/claude-mcp-n8n.md) | Claude talks to your n8n | n8n, Claude Sandbox |
-| [Ollama](manuals/ollama.md) | Local LLMs on your machine (`gemma4:e2b`, `nomic-embed-text`) | – |
+| [Ollama](manuals/ollama.md) | Local LLMs on your machine (gemma4:e2b, nomic-embed-text) | — |
 
 ## Order
 

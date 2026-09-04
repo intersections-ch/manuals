@@ -1,0 +1,47 @@
+// ---------- numbered steps (JS wraps each h3 + its run into .step) ----------
+.step {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 22px;
+  padding-bottom: 34px;
+}
+.step:last-child { padding-bottom: 0; }
+
+.step-rail { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+.step-badge {
+  width: 40px; height: 40px; flex: none;
+  border-radius: var(--radius);
+  background: var(--dark); color: var(--on-dark);
+  display: grid; place-items: center;
+  font: 700 16px/1 var(--mono);
+}
+.step-line { flex: 1; width: 2px; background: var(--rail); }
+
+.step-body { min-width: 0; }
+.step-body > h3 { margin: 8px 0 10px; }
+.step-body > :last-child { margin-bottom: 0; }
+.step-body p { font-size: 17px; }
+
+// ---------- step link pills ----------
+.step-links { margin: 0 0 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.step-links a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 14px 7px 12px;
+  border: 1px solid var(--dark); border-radius: 999px;
+  font: 500 13.5px/1 var(--font);
+  color: var(--dark); text-decoration: none;
+  transition: background .12s ease, color .12s ease;
+}
+.step-links a::before {
+  content: "Manual:";
+  color: var(--ink-mute);
+  font-weight: 400;
+}
+[lang="de"] .step-links a::before { content: "Anleitung:"; }
+.step-links a::after {
+  content: "→";
+  font-family: var(--mono);
+}
+.step-links a:hover { background: var(--dark); color: var(--on-dark); }
+.step-links a:hover::before { color: var(--on-dark-mute); }

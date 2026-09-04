@@ -1,36 +1,10 @@
 <!doctype html>
 <html lang="{{ page.lang | default: 'en' }}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="icon" href="{{ '/assets/logo.png' | relative_url }}">
-</head>
-<body>
-  <header class="site-header">
-    <a href="{% if page.lang == 'de' %}{{ '/de/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" class="logo"><img src="{{ '/assets/logo.png' | relative_url }}" alt="intersections"></a>
-    <nav>
-      {% if page.lang == 'de' %}<a href="{{ '/de/' | relative_url }}">Manuals</a>{% else %}<a href="{{ '/' | relative_url }}">Manuals</a>{% endif %}
-    </nav>
-  </header>
-
-  <main class="content">
-    {{ content }}
-  </main>
-
-  <footer class="site-footer">
-    <span>{{ site.title }}</span>
-  </footer>
-
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-    // GitHub renders ```mermaid natively; Jekyll turns it into <pre><code class="language-mermaid">.
-    document.querySelectorAll('code.language-mermaid').forEach(c => {
-      const pre = c.parentElement, div = document.createElement('pre');
-      div.className = 'mermaid'; div.textContent = c.textContent; pre.replaceWith(div);
-    });
-    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
-  </script>
+<head>{% include head.html %}</head>
+<body class="{{ page.body_class | default: 'is-plain' }}">
+  {% include header.html %}
+  <main class="shell">{{ content }}</main>
+  {% include footer.html %}
+  {% include scripts.html %}
 </body>
 </html>

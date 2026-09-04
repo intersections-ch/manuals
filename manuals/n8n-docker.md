@@ -1,6 +1,7 @@
 ---
 title: n8n on Docker
 lang: en
+slug: n8n-docker
 ---
 
 # n8n on Docker
@@ -9,7 +10,7 @@ lang: en
 
 Self-hosted automation platform. You'll run it in a container and log in at http://localhost:5678.
 
-<mark>Careful:</mark> the Ollama image is over 3 GB and the models on top of it are large again. Pull them during a break rather than while the class is waiting.
+> **Careful:** the Ollama image is over 3 GB and the models on top of it are large again. Pull them during a break rather than while the class is waiting.
 
 We use the course stack at [intersections-ch/docker-n8n-ollama-qdrant](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) — n8n, [Qdrant](qdrant-docker.md) and [Ollama](ollama.md) as three separate compose files on one shared Docker network.
 

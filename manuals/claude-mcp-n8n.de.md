@@ -1,6 +1,8 @@
 ---
 title: Claude ↔ n8n (MCP)
 lang: de
+slug: claude-mcp-n8n
+steps: true
 ---
 
 # Claude ↔ n8n (MCP)
@@ -13,11 +15,17 @@ Verbindet Claude über MCP mit deinem lokalen n8n, damit Claude deine Workflows 
 
 Auf allen drei Plattformen gleich — die Arbeit passiert im n8n-UI und in zwei Dateien.
 
-**1. MCP in n8n einschalten.** http://localhost:5678 > Settings > **Instance-level MCP** > *Enable MCP access*. Braucht n8n 2.33 oder neuer.
+### 1. MCP in n8n einschalten
 
-**2. Konfiguration kopieren.** Unter *Connection details* > **Connect** > Reiter **API key**. n8n erzeugt ein Token und zeigt einen ausgefüllten Configuration-JSON-Block. Jetzt kopieren — sobald du den Reiter verlässt, ist das Token maskiert und du musst es rotieren, um wieder eines zu sehen.
+http://localhost:5678 > Settings > **Instance-level MCP** > *Enable MCP access*. Braucht n8n 2.33 oder neuer.
 
-**3. In `.mcp.json` einfügen**, im Wurzelverzeichnis deines Repos. Datei anlegen, falls sie fehlt. Danach den Host auf `host.docker.internal:5678` ändern, denn in der Sandbox ist `localhost` die Sandbox selbst:
+### 2. Konfiguration kopieren
+
+Unter *Connection details* > **Connect** > Reiter **API key**. n8n erzeugt ein Token und zeigt einen ausgefüllten Configuration-JSON-Block. Jetzt kopieren — sobald du den Reiter verlässt, ist das Token maskiert und du musst es rotieren, um wieder eines zu sehen.
+
+### 3. In `.mcp.json` einfügen
+
+Im Wurzelverzeichnis deines Repos — Datei anlegen, falls sie fehlt. Danach den Host auf `host.docker.internal:5678` ändern, denn in der Sandbox ist `localhost` die Sandbox selbst:
 
 ```json
 {
@@ -33,13 +41,17 @@ Auf allen drei Plattformen gleich — die Arbeit passiert im n8n-UI und in zwei 
 }
 ```
 
-**4. Der Sandbox den Zugriff erlauben.** Auf deiner Maschine, nicht in der Sandbox:
+### 4. Der Sandbox den Zugriff erlauben
+
+Auf deiner Maschine, nicht in der Sandbox:
 
 ```bash
 sbx policy allow network host.docker.internal:5678
 ```
 
-**5. Claude neu starten**, damit die neue Datei gelesen wird.
+### 5. Claude neu starten
+
+Claude liest `.mcp.json` beim Start, der neue Server erscheint also erst nach einem Neustart.
 
 `.mcp.json` enthält ein gültiges Token — trag es in `.gitignore` ein, ausser das Repo ist privat und das Token wegwerfbar.
 

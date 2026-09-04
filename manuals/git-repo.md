@@ -1,6 +1,7 @@
 ---
 title: Git Repo Access
 lang: en
+slug: git-repo
 ---
 
 # Git Repo Access
@@ -9,7 +10,7 @@ lang: en
 
 An SSH key on your machine, registered with Azure DevOps, so you can clone your course repo and push back.
 
-> Every URL below is a <mark>placeholder</mark>. You get your own repo — named after you or a tag you're given — on the morning of the course. Substitute the URL you're handed for `<org>`, `<project>` and `<repo-name>`; don't try to guess it.
+> **Careful:** every URL below is a <mark>placeholder</mark>. You get your own repo — named after you or a tag you're given — on the morning of the course. Substitute the URL you're handed for `<org>`, `<project>` and `<repo-name>`; don't try to guess it.
 
 The class runs on **Azure DevOps**. The GitHub commands are here too, because you will need them the first time you clone anything else.
 

@@ -1,6 +1,7 @@
 ---
 title: Ollama
 lang: de
+slug: ollama
 ---
 
 # Ollama
@@ -9,7 +10,7 @@ lang: de
 
 Führt offene LLMs lokal aus. Du lädst zwei Modelle herunter und chattest mit einem davon im Terminal.
 
-<mark>Achtung:</mark> Das gemma4-Modell ist fast 10 GB gross. Der Download dauert eine Weile — nur installieren, wenn du es wirklich brauchst, am besten während einer Pause. Die Chat-Modelle brauchen ausserdem viel RAM auf deinem Computer.
+> **Achtung:** Das gemma4-Modell ist fast 10 GB gross. Der Download dauert eine Weile — nur installieren, wenn du es wirklich brauchst, am besten während einer Pause. Die Chat-Modelle brauchen ausserdem viel RAM auf deinem Computer.
 
 | Modell | Wofür |
 |---|---|

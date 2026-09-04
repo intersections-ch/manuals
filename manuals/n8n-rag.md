@@ -1,6 +1,8 @@
 ---
 title: RAG in n8n
 lang: en
+slug: n8n-rag
+steps: true
 ---
 
 # RAG in n8n
@@ -35,7 +37,7 @@ New workflow, name it `Remember`. Four nodes:
 1. **When chat message received** (Chat Trigger) — the starting node.
 2. **Qdrant Vector Store** — Operation Mode <mark>**Insert Documents**</mark>, Qdrant Collection `facts`.
 3. On the vector store's **Embedding** connector: **Embeddings Ollama** — model `nomic-embed-text`.
-4. On its **Document** connector: **Default Data Loader** — Type of Data `JSON`, Mode `Load Specific Data`, Data `{{ $json.chatInput }}`. Give it a **Recursive Character Text Splitter** with chunk size `1000`, overlap `200`.
+4. On its **Document** connector: **Default Data Loader** — Type of Data `JSON`, Mode `Load Specific Data`, Data <code>&#123;&#123; $json.chatInput &#125;&#125;</code>. Give it a **Recursive Character Text Splitter** with chunk size `1000`, overlap `200`.
 
 Save, then open the chat panel and type a few facts it couldn't know:
 
@@ -84,4 +86,4 @@ Answers *fourteen*. It cannot have known that — it came back out of Qdrant. Co
 **`connect ECONNREFUSED 127.0.0.1:6333`** — a credential still says `localhost`. Inside the container it must be `http://qdrant:6333` and `http://ollama:11434`.
 
 <!-- #TODO check whether the Qdrant node's "Collection Config" option can create the collection on first insert, which would drop the curl step. -->
-<!-- #TODO Default Data Loader field path: confirm `{{ $json.chatInput }}` is still what the Chat Trigger emits in n8n 2.x. -->
+<!-- #TODO Default Data Loader field path: confirm <code>&#123;&#123; $json.chatInput &#125;&#125;</code> is still what the Chat Trigger emits in n8n 2.x. -->

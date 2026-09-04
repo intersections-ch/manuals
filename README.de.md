@@ -16,14 +16,14 @@ Hängen geblieben? Frag Claude — Fehlermeldung reinkopieren, meistens weiss es
 
 | Manual | Was du bekommst | Voraussetzungen |
 |---|---|---|
-| [Basis-Setup](manuals/basic-setup.de.md) | Die ganze Kursumgebung, der Reihe nach | – |
+| [Basis-Setup](manuals/basic-setup.de.md) | Die ganze Kursumgebung, der Reihe nach | — |
 | [Claude Sandbox](manuals/claude-sandbox.de.md) | Claude Code in einer isolierten Docker-Box | Docker |
-| [Git-Repo-Zugang](manuals/git-repo.de.md) | SSH-Key + das Kurs-Repo auf deiner Maschine | – |
+| [Git-Repo-Zugang](manuals/git-repo.de.md) | SSH-Key + das Kurs-Repo auf deiner Maschine | — |
 | [Qdrant auf Docker](manuals/qdrant-docker.de.md) | Lokale Vektordatenbank | Docker, Ollama |
 | [n8n auf Docker](manuals/n8n-docker.de.md) | Lokaler Automatisierungsserver | Docker, Qdrant |
 | [RAG in n8n](manuals/n8n-rag.de.md) | Zwei Workflows: ein Chat-Agent mit Gedächtnis | Qdrant, n8n |
 | [Claude ↔ n8n (MCP)](manuals/claude-mcp-n8n.de.md) | Claude spricht mit deinem n8n | n8n, Claude Sandbox |
-| [Ollama](manuals/ollama.de.md) | Lokale LLMs auf deiner Maschine (`gemma4:e2b`, `nomic-embed-text`) | – |
+| [Ollama](manuals/ollama.de.md) | Lokale LLMs auf deiner Maschine (gemma4:e2b, nomic-embed-text) | — |
 
 ## Reihenfolge
 

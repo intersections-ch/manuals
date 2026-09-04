@@ -1,0 +1,82 @@
+# Single source for the index cards, the sidebar list and prev/next.
+# README.md / README.de.md tables are regenerated from this by scripts/sync-readme.py
+- slug: basic-setup
+  start: true
+  en:
+    title: Basic Setup
+    desc: The whole course environment, in order
+    requires: "—"
+  de:
+    title: Basis-Setup
+    desc: Die ganze Kursumgebung, der Reihe nach
+    requires: "—"
+
+- slug: claude-sandbox
+  en:
+    title: Claude Sandbox
+    desc: Claude Code in an isolated Docker box
+    requires: Docker
+  de:
+    title: Claude Sandbox
+    desc: Claude Code in einer isolierten Docker-Box
+    requires: Docker
+
+- slug: git-repo
+  en:
+    title: Git Repo Access
+    desc: SSH key + the course repo on your machine
+    requires: "—"
+  de:
+    title: Git-Repo-Zugang
+    desc: SSH-Key + das Kurs-Repo auf deiner Maschine
+    requires: "—"
+
+- slug: qdrant-docker
+  en:
+    title: Qdrant on Docker
+    desc: Local vector database
+    requires: Docker, Ollama
+  de:
+    title: Qdrant auf Docker
+    desc: Lokale Vektordatenbank
+    requires: Docker, Ollama
+
+- slug: n8n-docker
+  en:
+    title: n8n on Docker
+    desc: Local automation server
+    requires: Docker, Qdrant
+  de:
+    title: n8n auf Docker
+    desc: Lokaler Automatisierungsserver
+    requires: Docker, Qdrant
+
+- slug: n8n-rag
+  en:
+    title: RAG in n8n
+    desc: "Two workflows: a chat agent with a memory"
+    requires: Qdrant, n8n
+  de:
+    title: RAG in n8n
+    desc: "Zwei Workflows: ein Chat-Agent mit Gedächtnis"
+    requires: Qdrant, n8n
+
+- slug: claude-mcp-n8n
+  en:
+    title: Claude ↔ n8n (MCP)
+    desc: Claude talks to your n8n
+    requires: n8n, Claude Sandbox
+  de:
+    title: Claude ↔ n8n (MCP)
+    desc: Claude spricht mit deinem n8n
+    requires: n8n, Claude Sandbox
+
+- slug: ollama
+  en:
+    title: Ollama
+    desc: "Local LLMs on your machine (gemma4:e2b, nomic-embed-text)"
+    requires: "—"
+  de:
+    title: Ollama
+    desc: "Lokale LLMs auf deiner Maschine (gemma4:e2b, nomic-embed-text)"
+    requires: "—"

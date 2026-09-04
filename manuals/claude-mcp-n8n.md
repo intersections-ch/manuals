@@ -1,6 +1,8 @@
 ---
 title: Claude ↔ n8n (MCP)
 lang: en
+slug: claude-mcp-n8n
+steps: true
 ---
 
 # Claude ↔ n8n (MCP)
@@ -13,11 +15,17 @@ Connects Claude to your local n8n over MCP, so Claude can list, build and run yo
 
 Same on all three platforms — the work happens in the n8n UI and in two files.
 
-**1. Turn on MCP in n8n.** http://localhost:5678 > Settings > **Instance-level MCP** > *Enable MCP access*. Needs n8n 2.33 or newer.
+### 1. Turn on MCP in n8n
 
-**2. Copy the config.** Under *Connection details* > **Connect** > **API key** tab. n8n generates a token and shows a filled-in Configuration JSON block. Copy it now — once you leave the tab the token is redacted and you have to rotate it to see one again.
+http://localhost:5678 > Settings > **Instance-level MCP** > *Enable MCP access*. Needs n8n 2.33 or newer.
 
-**3. Paste it into `.mcp.json`** at the root of your repo. Create the file if it isn't there. Then change the host to `host.docker.internal:5678`, because inside the sandbox `localhost` is the sandbox:
+### 2. Copy the config
+
+Under *Connection details* > **Connect** > **API key** tab. n8n generates a token and shows a filled-in Configuration JSON block. Copy it now — once you leave the tab the token is redacted and you have to rotate it to see one again.
+
+### 3. Paste it into `.mcp.json`
+
+At the root of your repo — create the file if it isn't there. Then change the host to `host.docker.internal:5678`, because inside the sandbox `localhost` is the sandbox:
 
 ```json
 {
@@ -33,13 +41,17 @@ Same on all three platforms — the work happens in the n8n UI and in two files.
 }
 ```
 
-**4. Let the sandbox reach n8n.** On your machine, not in the sandbox:
+### 4. Let the sandbox reach n8n
+
+On your machine, not in the sandbox:
 
 ```bash
 sbx policy allow network host.docker.internal:5678
 ```
 
-**5. Restart Claude** so it reads the new file.
+### 5. Restart Claude
+
+Claude reads `.mcp.json` at startup, so the new server only shows up after a restart.
 
 `.mcp.json` holds a live token — add it to `.gitignore` unless the repo is private and the token is throwaway.
 

@@ -1,0 +1,30 @@
+en:
+  nav_manuals: Manuals
+  on_this_page: On this page
+  all_manuals: All manuals
+  contents: Contents
+  breadcrumb_root: Manuals
+  prev: Back
+  next: Next
+  start_here: Start here
+  needs: "Needs:"
+  diagram: Diagram
+  step_link: "Manual:"
+  copy: copy
+  copied: copied
+  index_label: Overview
+de:
+  nav_manuals: Manuals
+  on_this_page: Auf dieser Seite
+  all_manuals: Alle Manuals
+  contents: Inhalt
+  breadcrumb_root: Manuals
+  prev: Zurück
+  next: Weiter
+  start_here: Start hier
+  needs: "Braucht:"
+  diagram: Diagramm
+  step_link: "Anleitung:"
+  copy: kopieren
+  copied: kopiert
+  index_label: Übersicht

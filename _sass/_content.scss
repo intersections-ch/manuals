@@ -1,0 +1,129 @@
+// ---------- headings ----------
+.manual-body > h1,
+.index-intro > h1 {
+  margin: 0;
+  font: 700 46px/1.05 var(--font);
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.manual-body > h1::after,
+.index-intro > h1::after {
+  content: ""; display: block;
+  width: 76px; height: 4px; border-radius: 2px;
+  margin: 16px 0 26px;
+  background: var(--gradient);
+}
+
+.manual-body h2 {
+  margin: 50px 0 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+  font: 700 15px/1.4 var(--mono);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--dark);
+}
+.manual-body > h2:first-child { margin-top: 0; }
+.manual-body h2 + * { margin-top: 28px; }
+
+.manual-body h3 {
+  margin: 34px 0 10px;
+  font: 700 25px/1.2 var(--font);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+// ---------- prose ----------
+.manual-body p,
+.manual-body li {
+  font-size: 18px; line-height: 1.65; color: var(--ink-body);
+  text-wrap: pretty;
+}
+.manual-body p { margin: 0 0 18px; max-width: var(--measure); }
+.manual-body ul,
+.manual-body ol { margin: 0 0 18px; padding-left: 1.3em; max-width: var(--measure); }
+.manual-body li { margin-bottom: 6px; }
+.manual-body li > ul, .manual-body li > ol { margin-top: 6px; }
+.manual-body strong { font-weight: 700; color: var(--ink); }
+.manual-body hr { border: 0; height: 1px; background: var(--line); margin: 40px 0; }
+
+// ---------- inline code ----------
+.manual-body :not(pre) > code {
+  font: 500 15px/1 var(--mono);
+  background: #e7e4de;
+  border: 1px solid #d6d2cb;
+  border-radius: 5px;
+  padding: 2px 6px;
+  color: var(--dark);
+  overflow-wrap: break-word;
+}
+
+// ---------- note boxes (blockquotes that are not the meta strip) ----------
+.note {
+  display: flex; gap: 12px;
+  padding: 14px 16px; margin: 0 0 18px;
+  border-radius: var(--radius);
+  background: #f0eee9; border: 1px solid var(--line-soft);
+  max-width: var(--measure);
+}
+.note-label {
+  font: 700 12px/1.5 var(--mono);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-faint); white-space: nowrap;
+}
+.note-text { font: 400 15.5px/1.55 var(--font); color: var(--ink-body); }
+.note-text > :first-child { margin-top: 0; }
+.note-text > :last-child { margin-bottom: 0; }
+.note-text p { font-size: 15.5px; line-height: 1.55; margin: 0 0 8px; }
+.note-text :not(pre) > code { font-size: 14px; background: #e2dfd8; border-color: #d6d2cb; }
+
+// ---------- meta strip ----------
+.meta-strip {
+  display: flex; flex-wrap: wrap;
+  background: var(--dark); border-radius: var(--radius);
+  overflow: hidden; margin: 0 0 34px;
+}
+.meta-cell {
+  padding: 14px 20px;
+  display: flex; flex-direction: column; gap: 4px;
+  border-right: 1px solid var(--dark-line);
+}
+.meta-cell:last-child { border-right: 0; }
+.meta-label {
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--on-dark-mute);
+}
+.meta-value { font: 500 14px/1.3 var(--font); color: var(--on-dark); }
+.meta-value a { color: var(--accent-yellow); text-decoration-color: #6b6438; }
+.meta-value a:hover { text-decoration-color: var(--accent-yellow); }
+
+// ---------- tables ----------
+.manual-body table {
+  border-collapse: collapse; width: 100%; margin: 0 0 22px;
+  font-size: 15.5px;
+}
+.manual-body th, .manual-body td {
+  text-align: left; padding: 10px 12px;
+  border-bottom: 1px solid var(--line); vertical-align: top;
+}
+.manual-body th {
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+// ---------- mermaid panel ----------
+.diagram-panel {
+  border: 1px solid var(--line-soft); border-radius: var(--radius);
+  background: #fff; overflow: hidden; margin: 0 0 22px;
+}
+.diagram-bar {
+  padding: 8px 14px; background: #f0eee9;
+  border-bottom: 1px solid var(--line-soft);
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+}
+.diagram-panel .mermaid {
+  margin: 0; padding: 18px; display: flex; justify-content: center;
+  overflow-x: auto;
+}

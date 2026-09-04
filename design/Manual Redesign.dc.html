@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #e9e8e6; font-family: 'DM Sans', system-ui, sans-serif; }
+  a { color: #1b1c1e; text-decoration-color: #d9a0b8; text-underline-offset: 3px; }
+  a:hover { color: #000; text-decoration-color: #e8d84a; }
+  ::selection { background: #f2e9a0; }
+</style>
+</helmet>
+
+<section style="padding: 48px 40px 80px; display: flex; flex-direction: column; gap: 56px; align-items: center; font-family: 'DM Sans', sans-serif;">
+
+  <div style="width: 100%; max-width: 1240px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: inline-flex; align-items: center; gap: 10px; font: 500 12px/1 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6a67;">
+      <span style="display: inline-block; width: 26px; height: 1px; background: #b9b7b3;"></span>
+      Vorschlag · Manual-Seite
+    </div>
+    <div style="font: 700 34px/1.1 'DM Sans', sans-serif; letter-spacing: -0.02em; color: #17181a;">Wie es aussehen könnte</div>
+    <div style="max-width: 62ch; font: 400 16px/1.6 'DM Sans', sans-serif; color: #55534f;">Gleiche Markdown-Quelle, nur andere Layout- und Typo-Regeln: breitere Nutzfläche mit Sidebar statt leerer Ränder, sichtbar nummerierte Schritte, dunkle Code-Blöcke, DM Sans für Prosa und Headings.</div>
+  </div>
+
+  <!-- ============ MOCKUP ============ -->
+  <div style="width: 100%; max-width: 1240px; border: 1px solid #cfcdc9; border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px -30px rgba(0,0,0,0.35); background: #f7f6f4;">
+
+    <!-- browser chrome -->
+    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #ddd9d5; border-bottom: 1px solid #cfcdc9;">
+      <span style="width: 10px; height: 10px; border-radius: 50%; background: #c4bfb9;"></span>
+      <span style="width: 10px; height: 10px; border-radius: 50%; background: #c4bfb9;"></span>
+      <span style="width: 10px; height: 10px; border-radius: 50%; background: #c4bfb9;"></span>
+      <span style="margin-left: 10px; font: 400 11px/1 'JetBrains Mono', monospace; color: #7c7874;">intersections.github.io/manuals/basis-setup</span>
+    </div>
+
+    <!-- site header -->
+    <div style="background: #17181a; color: #f2f1ef; display: flex; align-items: center; justify-content: space-between; padding: 16px 32px;">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <span style="font: 700 19px/1 'DM Sans', sans-serif; letter-spacing: -0.01em;">intersections</span>
+        <span style="font: 400 11px/1 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #8d8b87;">manuals</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 22px; font: 500 13px/1 'DM Sans', sans-serif;">
+        <span style="color: #cfcdc9;">Manuals</span>
+        <span style="display: flex; gap: 2px; padding: 3px; border: 1px solid #34363a; border-radius: 999px;">
+          <span style="padding: 4px 10px; border-radius: 999px; background: #f2f1ef; color: #17181a; font: 500 12px/1 'JetBrains Mono', monospace;">EN</span>
+          <span style="padding: 4px 10px; border-radius: 999px; color: #8d8b87; font: 500 12px/1 'JetBrains Mono', monospace;">DE</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- body: sidebar + content -->
+    <div style="display: grid; grid-template-columns: 244px minmax(0, 1fr); background: #f7f6f4;">
+
+      <!-- sidebar -->
+      <aside style="border-right: 1px solid #e0ddd8; padding: 34px 24px 60px; display: flex; flex-direction: column; gap: 28px; background: #f2f1ee;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8b8884;">Auf dieser Seite</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; line-height: 1.5;">
+            <span style="padding: 5px 10px; border-radius: 6px; background: #17181a; color: #f7f6f4; font-weight: 500;">Installation</span>
+            <span style="padding: 5px 10px; color: #55534f;">1 · Claude Sandbox</span>
+            <span style="padding: 5px 10px; color: #55534f;">2 · Repo auf der Maschine</span>
+            <span style="padding: 5px 10px; color: #55534f;">3 · n8n auf Docker</span>
+            <span style="padding: 5px 10px; color: #55534f;">4 · Claude ↔ n8n</span>
+            <span style="padding: 5px 10px; color: #55534f;">Reihenfolge</span>
+          </div>
+        </div>
+        <div style="height: 1px; background: #e0ddd8;"></div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8b8884;">Alle Manuals</div>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5; color: #55534f;">
+            <span style="color: #17181a; font-weight: 500;">Basis-Setup</span>
+            <span>Claude Sandbox</span>
+            <span>Git-Repo-Zugang</span>
+            <span>Qdrant auf Docker</span>
+            <span>n8n auf Docker</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- content -->
+      <main style="padding: 40px 64px 72px; max-width: 860px;">
+
+        <div style="display: flex; align-items: center; gap: 10px; font: 500 11px/1 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #8b8884; margin-bottom: 18px;">
+          <span>Manuals</span><span style="color: #c4bfb9;">/</span><span style="color: #17181a;">Basis-Setup</span>
+        </div>
+
+        <h1 style="margin: 0; font: 700 46px/1.05 'DM Sans', sans-serif; letter-spacing: -0.035em; color: #121315;">Basis-Setup</h1>
+        <div style="width: 76px; height: 4px; border-radius: 2px; margin: 16px 0 26px; background: linear-gradient(90deg, #e9a3bd, #f0e15c);"></div>
+
+        <!-- meta strip: dark, replaces the pale callout -->
+        <div style="display: flex; flex-wrap: wrap; gap: 0; background: #17181a; border-radius: 10px; overflow: hidden; margin-bottom: 34px;">
+          <div style="padding: 14px 20px; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid #2c2e32;">
+            <span style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8d8b87;">Voraussetzungen</span>
+            <span style="font: 500 14px/1.2 'DM Sans', sans-serif; color: #f7f6f4;">keine</span>
+          </div>
+          <div style="padding: 14px 20px; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid #2c2e32;">
+            <span style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8d8b87;">Dauer</span>
+            <span style="font: 500 14px/1.2 'DM Sans', sans-serif; color: #f7f6f4;">≈ 1 Stunde</span>
+          </div>
+          <div style="padding: 14px 20px; display: flex; flex-direction: column; gap: 4px;">
+            <span style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8d8b87;">Sprache</span>
+            <span style="font: 500 14px/1.2 'DM Sans', sans-serif; color: #f7f6f4;">Deutsch · <a href="#" style="color: #f0e15c; text-decoration-color: #6b6438;">English</a></span>
+          </div>
+        </div>
+
+        <p style="margin: 0 0 18px; font: 400 18px/1.65 'DM Sans', sans-serif; color: #2c2d2f; text-wrap: pretty;">Die komplette Kursumgebung in fünf Schritten: Claude Code in einer Sandbox, dein Repo ausgecheckt, n8n am Laufen, und beide miteinander verbunden. Jeder Schritt verlinkt ein vollständiges Manual — das durcharbeiten, dann hierher zurück.</p>
+        <p style="margin: 0 0 44px; font: 400 18px/1.65 'DM Sans', sans-serif; color: #2c2d2f;">Rechne mit einer Stunde, überwiegend Downloads.</p>
+
+        <h2 style="margin: 0 0 6px; font: 700 15px/1 'JetBrains Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #17181a;">Installation</h2>
+        <div style="height: 1px; background: #d8d5d0; margin-bottom: 34px;"></div>
+
+        <!-- steps -->
+        <div style="display: flex; flex-direction: column; gap: 0;">
+
+          <div style="display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 22px; padding-bottom: 34px;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+              <span style="width: 40px; height: 40px; border-radius: 10px; background: #17181a; color: #f7f6f4; display: grid; place-items: center; font: 700 16px/1 'JetBrains Mono', monospace;">1</span>
+              <span style="flex: 1; width: 2px; background: #ddd9d4;"></span>
+            </div>
+            <div>
+              <h3 style="margin: 8px 0 10px; font: 700 25px/1.2 'DM Sans', sans-serif; letter-spacing: -0.02em; color: #121315;">Claude Code in einer Sandbox</h3>
+              <a href="#" style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; padding: 7px 14px 7px 12px; border: 1px solid #17181a; border-radius: 999px; font: 500 13.5px/1 'DM Sans', sans-serif; text-decoration: none; color: #17181a;" style-hover="background: #17181a; color: #f7f6f4;">Manual: Claude Sandbox <span style="font-family: 'JetBrains Mono', monospace;">→</span></a>
+              <p style="margin: 0 0 14px; font: 400 17px/1.65 'DM Sans', sans-serif; color: #2c2d2f;">Claude-Code-CLI und Dockers <code style="font: 500 15px/1 'JetBrains Mono', monospace; background: #e7e4de; border: 1px solid #d6d2cb; border-radius: 5px; padding: 2px 6px; color: #17181a;">sbx</code> installieren, dann <code style="font: 500 15px/1 'JetBrains Mono', monospace; background: #e7e4de; border: 1px solid #d6d2cb; border-radius: 5px; padding: 2px 6px; color: #17181a;">sbx login</code> und <code style="font: 500 15px/1 'JetBrains Mono', monospace; background: #e7e4de; border: 1px solid #d6d2cb; border-radius: 5px; padding: 2px 6px; color: #17181a;">claude</code>. Melde dich mit deinem <mark style="background: linear-gradient(180deg, transparent 58%, #f0e15c 58%); padding: 0 1px;">Abo</mark> an, nicht mit einem API-Key.</p>
+
+              <div style="border-radius: 10px; overflow: hidden; border: 1px solid #101113; margin-bottom: 14px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; background: #101113; border-bottom: 1px solid #2c2e32;">
+                  <span style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8d8b87;">bash</span>
+                  <span style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #8d8b87;">copy</span>
+                </div>
+                <pre style="margin: 0; padding: 16px 18px; background: #17181a; color: #e6e4e0; font: 400 14.5px/1.7 'JetBrains Mono', monospace; overflow-x: auto;"><span style="color: #6f6d69;">$</span> npm install -g @anthropic-ai/claude-code
+<span style="color: #6f6d69;">$</span> sbx login
+<span style="color: #6f6d69;">$</span> claude</pre>
+              </div>
+
+              <div style="display: flex; gap: 12px; padding: 14px 16px; border-radius: 10px; background: #f0eee9; border: 1px solid #e0ddd8;">
+                <span style="font: 700 12px/1.5 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #8b8884; white-space: nowrap;">Check</span>
+                <span style="font: 400 15.5px/1.55 'DM Sans', sans-serif; color: #2c2d2f;">Fertig, wenn <code style="font: 500 14px/1 'JetBrains Mono', monospace; background: #e2dfd8; border-radius: 4px; padding: 2px 5px;">claude --version</code> und <code style="font: 500 14px/1 'JetBrains Mono', monospace; background: #e2dfd8; border-radius: 4px; padding: 2px 5px;">sbx --version</code> beide antworten.</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 22px; padding-bottom: 34px;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+              <span style="width: 40px; height: 40px; border-radius: 10px; background: #17181a; color: #f7f6f4; display: grid; place-items: center; font: 700 16px/1 'JetBrains Mono', monospace;">2</span>
+              <span style="flex: 1; width: 2px; background: #ddd9d4;"></span>
+            </div>
+            <div>
+              <h3 style="margin: 8px 0 10px; font: 700 25px/1.2 'DM Sans', sans-serif; letter-spacing: -0.02em; color: #121315;">Dein Repo auf deiner Maschine</h3>
+              <a href="#" style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; padding: 7px 14px 7px 12px; border: 1px solid #17181a; border-radius: 999px; font: 500 13.5px/1 'DM Sans', sans-serif; text-decoration: none; color: #17181a;" style-hover="background: #17181a; color: #f7f6f4;">Manual: Git-Repo-Zugang <span style="font-family: 'JetBrains Mono', monospace;">→</span></a>
+              <p style="margin: 0 0 14px; font: 400 17px/1.65 'DM Sans', sans-serif; color: #2c2d2f;">SSH-Key erzeugen, bei <strong style="font-weight: 700;">Azure DevOps</strong> registrieren, dein Repo klonen. Ihr bekommt je ein eigenes Repo, benannt nach euch oder einem Kürzel, das am Kursmorgen vergeben wird.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 22px;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <span style="width: 40px; height: 40px; border-radius: 10px; background: #17181a; color: #f7f6f4; display: grid; place-items: center; font: 700 16px/1 'JetBrains Mono', monospace;">3</span>
+            </div>
+            <div>
+              <h3 style="margin: 8px 0 10px; font: 700 25px/1.2 'DM Sans', sans-serif; letter-spacing: -0.02em; color: #121315;">n8n auf Docker</h3>
+              <p style="margin: 0; font: 400 17px/1.65 'DM Sans', sans-serif; color: #2c2d2f;">Container starten, Port prüfen, ersten Workflow anlegen.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- diagram in a framed dark-edged panel -->
+        <h2 style="margin: 50px 0 6px; font: 700 15px/1 'JetBrains Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #17181a;">Reihenfolge</h2>
+        <div style="height: 1px; background: #d8d5d0; margin-bottom: 22px;"></div>
+        <div style="border: 1px solid #e0ddd8; border-radius: 10px; background: #fff; padding: 0; overflow: hidden;">
+          <div style="padding: 8px 14px; background: #f0eee9; border-bottom: 1px solid #e0ddd8; font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8b8884;">Diagramm · Mermaid</div>
+          <div style="height: 210px; display: grid; place-items: center; background: repeating-linear-gradient(135deg, #fbfaf9 0 10px, #f4f2ef 10px 20px); font: 400 12px/1 'JetBrains Mono', monospace; color: #8b8884;">mermaid graph (unverändert, nur gerahmt)</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; gap: 16px; margin-top: 46px; padding-top: 22px; border-top: 1px solid #d8d5d0;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8b8884;">← Zurück</span>
+            <span style="font: 500 16px/1.2 'DM Sans', sans-serif; color: #17181a;">Manuals</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px; text-align: right;">
+            <span style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #8b8884;">Weiter →</span>
+            <span style="font: 500 16px/1.2 'DM Sans', sans-serif; color: #17181a;">Claude Sandbox</span>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- dark footer -->
+    <div style="background: #17181a; color: #8d8b87; padding: 26px 32px; display: flex; justify-content: space-between; font: 400 12px/1 'JetBrains Mono', monospace;">
+      <span>intersections · manuals</span>
+      <span>Basis-Setup · DE</span>
+    </div>
+  </div>
+
+  <!-- ============ INDEX PAGE ============ -->
+  <div style="width: 100%; max-width: 1240px; display: flex; flex-direction: column; gap: 10px; margin-top: 24px;">
+    <div style="display: inline-flex; align-items: center; gap: 10px; font: 500 12px/1 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6a67;">
+      <span style="display: inline-block; width: 26px; height: 1px; background: #b9b7b3;"></span>
+      Vorschlag · Übersichtsseite
+    </div>
+  </div>
+
+  <div style="width: 100%; max-width: 1240px; border: 1px solid #cfcdc9; border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px -30px rgba(0,0,0,0.35); background: #f7f6f4;">
+    <div style="background: #17181a; color: #f2f1ef; display: flex; align-items: center; justify-content: space-between; padding: 16px 32px;">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <span style="font: 700 19px/1 'DM Sans', sans-serif; letter-spacing: -0.01em;">intersections</span>
+        <span style="font: 400 11px/1 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #8d8b87;">manuals</span>
+      </div>
+      <span style="display: flex; gap: 2px; padding: 3px; border: 1px solid #34363a; border-radius: 999px;">
+        <span style="padding: 4px 10px; border-radius: 999px; background: #f2f1ef; color: #17181a; font: 500 12px/1 'JetBrains Mono', monospace;">EN</span>
+        <span style="padding: 4px 10px; border-radius: 999px; color: #8d8b87; font: 500 12px/1 'JetBrains Mono', monospace;">DE</span>
+      </span>
+    </div>
+
+    <div style="padding: 48px 56px 60px; display: flex; flex-direction: column; gap: 34px;">
+      <div style="max-width: 70ch;">
+        <h1 style="margin: 0; font: 700 46px/1.05 'DM Sans', sans-serif; letter-spacing: -0.035em; color: #121315;">Manuals</h1>
+        <div style="width: 76px; height: 4px; border-radius: 2px; margin: 16px 0 22px; background: linear-gradient(90deg, #e9a3bd, #f0e15c);"></div>
+        <p style="margin: 0; font: 400 18px/1.65 'DM Sans', sans-serif; color: #2c2d2f; text-wrap: pretty;">Neu hier? Fang mit <a href="#">Basis-Setup</a> an — es führt der Reihe nach durch die anderen Manuals. Sonst nimm eins, arbeite es durch und probier die Sachen am Ende aus.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px;">
+        <a href="#" style="grid-column: span 3; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 20px; align-items: center; padding: 22px 26px; border-radius: 12px; background: #17181a; text-decoration: none;">
+          <span style="display: flex; flex-direction: column; gap: 6px;">
+            <span style="font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #f0e15c;">Start hier</span>
+            <span style="font: 700 26px/1.15 'DM Sans', sans-serif; letter-spacing: -0.02em; color: #f7f6f4;">Basis-Setup</span>
+            <span style="font: 400 15.5px/1.5 'DM Sans', sans-serif; color: #a9a7a3;">Die ganze Kursumgebung, der Reihe nach · keine Voraussetzungen</span>
+          </span>
+          <span style="font: 400 26px/1 'JetBrains Mono', monospace; color: #f7f6f4;">→</span>
+        </a>
+
+        <a href="#" style="display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; border: 1px solid #dedbd6; border-radius: 12px; background: #fdfcfb; text-decoration: none;" style-hover="border-color: #17181a;">
+          <span style="font: 700 18px/1.2 'DM Sans', sans-serif; color: #121315;">Claude Sandbox</span>
+          <span style="font: 400 15px/1.5 'DM Sans', sans-serif; color: #55534f;">Claude Code in einer isolierten Docker-Box</span>
+          <span style="margin-top: 6px; font: 500 11px/1 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #8b8884;">Braucht: Docker</span>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; border: 1px solid #dedbd6; border-radius: 12px; background: #fdfcfb; text-decoration: none;" style-hover="border-color: #17181a;">
+          <span style="font: 700 18px/1.2 'DM Sans', sans-serif; color: #121315;">Git-Repo-Zugang</span>
+          <span style="font: 400 15px/1.5 'DM Sans', sans-serif; color: #55534f;">SSH-Key + das Kurs-Repo auf deiner Maschine</span>
+          <span style="margin-top: 6px; font: 500 11px/1 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #8b8884;">Braucht: —</span>
+        </a>
+        <a href="#" style="display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; border: 1px solid #dedbd6; border-radius: 12px; background: #fdfcfb; text-decoration: none;" style-hover="border-color: #17181a;">
+          <span style="font: 700 18px/1.2 'DM Sans', sans-serif; color: #121315;">Qdrant auf Docker</span>
+          <span style="font: 400 15px/1.5 'DM Sans', sans-serif; color: #55534f;">Lokale Vektordatenbank</span>
+          <span style="margin-top: 6px; font: 500 11px/1 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #8b8884;">Braucht: Docker, Ollama</span>
+        </a>
+      </div>
+    </div>
+
+    <div style="background: #17181a; color: #8d8b87; padding: 26px 32px; display: flex; justify-content: space-between; font: 400 12px/1 'JetBrains Mono', monospace;">
+      <span>intersections · manuals</span>
+      <span>Übersicht · DE</span>
+    </div>
+  </div>
+
+</section>
+
+</x-dc>
+</body>
+</html>

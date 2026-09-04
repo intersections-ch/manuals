@@ -1,0 +1,24 @@
+{%- assign lang = page.lang | default: 'en' -%}
+{%- if page.alt -%}
+  {%- assign alt_url = page.alt -%}
+{%- elsif lang == 'de' -%}
+  {%- assign alt_url = page.url | replace: '.de.html', '.html' -%}
+{%- else -%}
+  {%- assign alt_url = page.url | replace: '.html', '.de.html' -%}
+{%- endif -%}
+{%- if lang == 'de' -%}{%- assign home = '/de/' -%}{%- else -%}{%- assign home = '/' -%}{%- endif -%}
+{%- assign t = site.data.ui[lang] -%}
+
+<header class="site-header">
+  <a class="wordmark" href="{{ home | relative_url }}">
+    <img src="{{ '/assets/logo.png' | relative_url }}" alt="intersections">
+    <span class="wordmark-tag">manuals</span>
+  </a>
+  <nav class="site-nav">
+    <a href="{{ home | relative_url }}">{{ t.nav_manuals }}</a>
+    <span class="lang-toggle">
+      <a{% if lang != 'de' %} class="is-current" aria-current="true"{% endif %} href="{% if lang == 'de' %}{{ alt_url | relative_url }}{% else %}{{ page.url | relative_url }}{% endif %}">EN</a>
+      <a{% if lang == 'de' %} class="is-current" aria-current="true"{% endif %} href="{% if lang == 'de' %}{{ page.url | relative_url }}{% else %}{{ alt_url | relative_url }}{% endif %}">DE</a>
+    </span>
+  </nav>
+</header>

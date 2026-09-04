@@ -81,4 +81,22 @@ German is informal (*du*) and Swiss (`ss`, never `ß`).
 - Use `> ` blockquote only for the Requires line and short warnings. Use `<mark>` sparingly for the one word that matters.
 
 ## Design
-All design lives in the `:root` block at the top of `assets/css/style.css`. Change tokens there first; only touch rules below if a token can't express it. Colors: background stays near-white; pink/yellow/peach are highlights only.
+Tokens live in `_sass/_tokens.scss`. Change those first; only touch the layer files
+(`_base`, `_chrome`, `_content`, `_code`, `_steps`, `_index`, `_responsive`) if a token can't
+express it. Colors: background stays near-white; pink/yellow/peach are highlights only, and the
+`h1` gradient rule plus the yellow `<mark>` are the site's identity — don't recolour them.
+The reference mockup is `design/Manual Redesign.dc.html` (open it in a browser; `design/support.js`
+is its runtime and is never shipped). `design/` is excluded from the Jekyll build.
+
+`assets/js/site.js` decorates the rendered HTML — meta strip, note boxes, step badges, link pills,
+code title bars, sidebar TOC, mermaid panels. Every page must still read correctly with it disabled,
+because that is what GitHub shows.
+
+## Site plumbing
+- `_data/manuals.yml` is the single source for the index cards, the sidebar list and prev/next.
+  After editing it run `python3 scripts/sync-readme.py` to regenerate the README tables.
+- `_data/ui.yml` holds every UI string, per language. No hard-coded German or English in layouts.
+- Front matter per manual: `title`, `lang`, `slug`, and `steps: true` only when the `###` headings
+  are numbered steps rather than OS variants (`### macOS`).
+- Liquid runs before kramdown, so a literal `{{ … }}` in prose gets eaten. Write n8n expressions as
+  `<code>&#123;&#123; $json.foo &#125;&#125;</code>` — Liquid ignores it and GitHub decodes it.

@@ -1,6 +1,7 @@
 ---
 title: Claude Sandbox
 lang: de
+slug: claude-sandbox
 ---
 
 # Claude Sandbox

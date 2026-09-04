@@ -1,6 +1,7 @@
 ---
 title: Ollama
 lang: en
+slug: ollama
 ---
 
 # Ollama
@@ -9,7 +10,7 @@ lang: en
 
 Runs open LLMs locally. You'll pull two models and chat with one of them from the terminal.
 
-<mark>Careful:</mark> the gemma4 model is nearly 10 GB. The download takes a while — only install it if you actually need it, and ideally during a break. The chat models also want a lot of RAM on your machine.
+> **Careful:** the gemma4 model is nearly 10 GB. The download takes a while — only install it if you actually need it, and ideally during a break. The chat models also want a lot of RAM on your machine.
 
 | Model | For |
 |---|---|

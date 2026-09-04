@@ -1,0 +1,45 @@
+---
+layout: default
+body_class: is-index
+---
+{%- assign lang = page.lang | default: 'en' -%}
+{%- assign t = site.data.ui[lang] -%}
+{%- assign items = site.data.manuals -%}
+
+<div class="index-shell">
+  <div class="index-intro">
+    <h1>{{ page.title }}</h1>
+    {%- if page.intro %}<p class="index-lead">{{ page.intro }}</p>{% endif -%}
+    {%- if page.repo_note %}
+    <a class="repo-note" href="{{ page.repo_url }}">
+      <span class="repo-note-label">{{ page.repo_note }}</span>
+      <span class="repo-note-url">{{ page.repo_url | remove: 'https://' }} <span class="card-arrow">→</span></span>
+    </a>
+    {% endif -%}
+  </div>
+
+  <div class="card-grid">
+    {%- for m in items -%}
+    {%- if lang == 'de' -%}{%- assign u = '/manuals/' | append: m.slug | append: '.de.html' -%}
+    {%- else -%}{%- assign u = '/manuals/' | append: m.slug | append: '.html' -%}{%- endif -%}
+    {%- if m.start -%}
+    <a class="card card-hero" href="{{ u | relative_url }}">
+      <span class="card-hero-text">
+        <span class="card-eyebrow">{{ t.start_here }}</span>
+        <span class="card-hero-title">{{ m[lang].title }}</span>
+        <span class="card-hero-desc">{{ m[lang].desc }} · {{ t.needs }} {{ m[lang].requires }}</span>
+      </span>
+      <span class="card-arrow">→</span>
+    </a>
+    {%- else -%}
+    <a class="card" href="{{ u | relative_url }}">
+      <span class="card-title">{{ m[lang].title }}</span>
+      <span class="card-desc">{{ m[lang].desc }}</span>
+      <span class="card-needs">{{ t.needs }} {{ m[lang].requires }}</span>
+    </a>
+    {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="manual-body index-body" data-manual-body>{{ content }}</div>
+</div>

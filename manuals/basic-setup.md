@@ -1,6 +1,8 @@
 ---
 title: Basic Setup
 lang: en
+slug: basic-setup
+steps: true
 ---
 
 # Basic Setup
@@ -16,7 +18,7 @@ This tutorial has you type a fair number of terminal commands. If anything is un
 ## Install
 
 ### 1. Claude Code in a sandbox
-Manual: → [Claude Sandbox](claude-sandbox.md)
+[Claude Sandbox](claude-sandbox.md)
 
 1. Install the Claude Code CLI and Docker's `sbx`, then run `sbx login`. Sign in with your Docker account.
 2. Run `sbx run claude` in a directory of your choice. That directory becomes the sandbox. Your Git repo is a good one to use (see the next step).
@@ -25,7 +27,7 @@ Manual: → [Claude Sandbox](claude-sandbox.md)
 Done when `claude --version` and `sbx --version` both print something.
 
 ### 2. Your repo on your machine
-Git access manual: → [Git Repo Access](git-repo.md)
+[Git Repo Access](git-repo.md)
 
 Run `git clone <repo>` in your usual working folder. That copies your repository onto your machine. (**Not** inside a sandbox.)
 
@@ -60,7 +62,7 @@ claude --dangerously-skip-permissions --resume
 picks your last conversation back up and stops asking permission for every command. Only reasonable because it's a sandbox.
 
 ### 4. The n8n stack
-n8n manuals: → [Qdrant on Docker](qdrant-docker.md) → [n8n on Docker](n8n-docker.md)
+[Qdrant on Docker](qdrant-docker.md) [n8n on Docker](n8n-docker.md)
 
 Clone [the course stack](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) and bring up Qdrant, Ollama and n8n — in that order — then create the owner account at http://localhost:5678.
 
@@ -69,7 +71,7 @@ Models: `nomic-embed-text` for Qdrant, `gemma4:e2b` if you want to chat locally 
 Done when http://localhost:5678 loads and you're logged in.
 
 ### 5. Wire Claude to n8n
-Manual: → [Claude ↔ n8n (MCP)](claude-mcp-n8n.md)
+[Claude ↔ n8n (MCP)](claude-mcp-n8n.md)
 
 1. Switch on Instance-level MCP in n8n (Settings > Instance-level MCP).
 2. Copy the Configuration JSON into the file `.mcp.json` in your repo (Connect > API key > copy Configuration JSON).

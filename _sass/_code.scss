@@ -1,0 +1,50 @@
+// ---------- code blocks ----------
+.manual-body div.highlighter-rouge,
+.manual-body pre.highlight {
+  margin: 0 0 14px;
+  border: 1px solid var(--dark-deep);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.code-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 14px;
+  background: var(--dark-deep);
+  border-bottom: 1px solid var(--dark-line);
+}
+.code-lang,
+.code-copy {
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--on-dark-mute);
+}
+.code-copy {
+  background: none; border: 0; padding: 4px 6px; margin: -4px -6px;
+  cursor: pointer; border-radius: 4px;
+}
+.code-copy:hover { color: var(--on-dark); background: #202226; }
+.code-copy.is-done { color: var(--accent-yellow); }
+
+.manual-body div.highlighter-rouge pre,
+.manual-body pre.highlight {
+  margin: 0; padding: 16px 18px;
+  overflow-x: auto;
+  font: 400 14.5px/1.7 var(--mono);
+  color: #e6e4e0;
+  background: var(--dark);
+}
+.manual-body pre code { background: none; border: 0; padding: 0; font: inherit; color: inherit; }
+
+// ---------- rouge tokens on dark (restrained: four colours) ----------
+.highlight {
+  .c, .c1, .cm, .cs, .cd { color: #6f6d69; font-style: italic; }  // comment
+  .k, .kd, .kn, .kp, .kr, .kt, .kc, .nb, .bp, .o, .ow { color: #c9c6bf; }  // keyword / builtin
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr { color: #d7cf9a; }  // string
+  .m, .mi, .mf, .mh, .mo, .il, .l, .no, .nl { color: var(--accent-pink); }  // literal / number
+  .nt, .na { color: #c9c6bf; }   // html/json tag + attribute
+  .p, .nx, .n, .nf, .nv, .vi, .vg { color: #e6e4e0; }
+  .gp { color: var(--ink-faint); }   // shell prompt, if a block ever has one
+  .err { color: #e6e4e0; background: none; }
+}

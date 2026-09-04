@@ -1,0 +1,65 @@
+.index-shell {
+  max-width: var(--shell); margin: 0 auto;
+  padding: 48px 56px 60px;
+  display: flex; flex-direction: column; gap: 34px;
+}
+.index-intro { max-width: 70ch; }
+.index-lead { margin: 0; font-size: 18px; line-height: 1.65; color: var(--ink-body); text-wrap: pretty; }
+
+.repo-note {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
+  margin-top: 22px; padding: 16px 20px;
+  border-radius: var(--radius);
+  background: var(--bg-sunk); border: 1px solid var(--line-soft);
+  text-decoration: none;
+}
+.repo-note:hover { border-color: var(--dark); }
+.repo-note-label {
+  font: 500 10px/1.4 var(--mono);
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+}
+.repo-note-url {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 500 15px/1.3 var(--mono); color: var(--dark);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 20px 22px;
+  border: 1px solid var(--line); border-radius: 12px;
+  background: var(--surface); text-decoration: none;
+  transition: border-color .12s ease;
+}
+.card:hover { border-color: var(--dark); }
+.card-title { font: 700 18px/1.2 var(--font); color: var(--ink); }
+.card-desc { font: 400 15px/1.5 var(--font); color: var(--ink-mute); }
+.card-needs {
+  margin-top: 6px;
+  font: 500 11px/1.4 var(--mono);
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
+}
+
+.card-hero {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px; align-items: center;
+  padding: 22px 26px; border: 0; background: var(--dark);
+}
+.card-hero:hover { background: #1f2124; }
+.card-hero-text { display: flex; flex-direction: column; gap: 6px; }
+.card-eyebrow {
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-yellow);
+}
+.card-hero-title { font: 700 26px/1.15 var(--font); letter-spacing: -0.02em; color: var(--on-dark); }
+.card-hero-desc { font: 400 15.5px/1.5 var(--font); color: #a9a7a3; }
+.card-arrow { font: 400 26px/1 var(--mono); color: var(--on-dark); }
+
+.index-body { margin-top: 10px; }
+.index-body h2 { margin-top: 0; }
