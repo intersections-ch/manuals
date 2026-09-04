@@ -1,0 +1,15 @@
+title: Intersections — Manuals
+description: Installation manuals for the course
+# baseurl: set to "/<repo-name>" when hosted at user.github.io/<repo-name>
+baseurl: ""
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - CLAUDE.md
+  - .claude
+  - README-dev.md
