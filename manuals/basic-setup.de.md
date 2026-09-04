@@ -9,27 +9,29 @@ lang: de
 
 Die komplette Kursumgebung in fünf Schritten: Claude Code in einer Sandbox, dein Repo ausgecheckt, n8n am Laufen, und beide miteinander verbunden. Jeder Schritt verlinkt ein vollständiges Manual — das durcharbeiten, dann hierher zurück.
 
-Rechne mit einer Stunde, überwiegend Downloads.
+Rechne mit 30–60 Minuten, überwiegend Downloads.
+
+Für das Tutorial müssen einige Befehle im Terminal eingegeben werden. Wenn etwas nicht klar ist, wende dich gerne an die Kursleitung.
 
 ## Installation
 
 ### 1. Claude Code in einer Sandbox
-→ [Claude Sandbox](claude-sandbox.de.md)
+Anleitung: → [Claude Sandbox](claude-sandbox.de.md)
 
-Claude-Code-CLI und Dockers `sbx` installieren, dann `sbx login` und `claude`. Melde dich mit deinem <mark>Abo</mark> an, nicht mit einem API-Key.
+1. Claude-Code-CLI und Dockers `sbx` installieren, dann `sbx login` ausführen. Mit Docker Account anmelden.
+2. `sbx run claude` in einem Verzeichnis deiner Wahl ausführen. Dieses Verzeichnis wird zur Sandbox. Dein Git-Repo eignet sich dafür gut (siehe nächster Punkt).
+3. Innerhalb von Claude: `/login` > mit deiner Subscription anmelden.
 
-Fertig, wenn `claude --version` und `sbx --version` beide antworten.
+Fertig, wenn `claude --version` und `sbx --version` beide etwas ausgeben.
 
 ### 2. Dein Repo auf deiner Maschine
-→ [Git-Repo-Zugang](git-repo.de.md)
+Anleitung Git Zugang: → [Git-Repo-Zugang](git-repo.de.md)
 
-SSH-Key erzeugen, bei **Azure DevOps** registrieren, dein Repo klonen.
+Führ `git clone <repo>` in deinem üblichen Arbeitsordner aus. Damit wird dein Repository auf deinen Rechner kopiert. (**Nicht** in einer Sandbox.)
 
-Ihr bekommt je ein eigenes Repo, benannt nach euch oder einem Kürzel, das am Kursmorgen freigeschaltet wird. `<repo-name>` ist in allen Manuals ein <mark>Platzhalter</mark> — nimm die URL, die du bekommst.
+Alle Teilnehmenden bekommen ein eigenes ADO-Git-Repository. `<repo-name>` ist in allen Manuals ein <mark>Platzhalter</mark> — nimm dort die URL, die zu deinem Repository führt.
 
-Auf deiner Maschine klonen, **nicht** in einer Sandbox — Schritt 3 hängt den Ordner ein, den du bereits hast.
-
-Fertig, wenn `git log` im Klon Historie zeigt.
+Fertig, wenn `git status` innerhalb des geklonten Repositories den Git-Status anzeigt.
 
 ### 3. Repo in der Sandbox öffnen
 
@@ -40,7 +42,9 @@ sbx run claude
 
 Der erste Lauf baut die Box und installiert Claude Code darin. Dieser Ordner — und nichts darüber — ist das, was Claude sieht.
 
-Zwei Befehle, die du danach ständig brauchst:
+Falls nötig, mit `/login` in Claude Code einloggen.
+
+Zwei Befehle, die danach oft hilfreich sind:
 
 ```bash
 sbx tui
@@ -56,18 +60,20 @@ claude --dangerously-skip-permissions --resume
 deine letzte Konversation zurückholt und aufhört, für jeden Befehl nach Erlaubnis zu fragen. Vertretbar nur, weil es eine Sandbox ist.
 
 ### 4. Der n8n-Stack
-→ [Qdrant auf Docker](qdrant-docker.de.md) → [n8n auf Docker](n8n-docker.de.md)
+Anleitungen für n8n: → [Qdrant auf Docker](qdrant-docker.de.md) → [n8n auf Docker](n8n-docker.de.md)
 
 [Den Kurs-Stack](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) klonen und Qdrant, Ollama und n8n in dieser Reihenfolge hochfahren, dann das Owner-Konto unter http://localhost:5678 anlegen.
 
-Modelle: `nomic-embed-text` für Qdrant, `gemma4:e4b` fürs lokale Chatten ([Ollama](ollama.de.md)).
+Modelle: `nomic-embed-text` für Qdrant, `gemma4:e2b` fürs lokale Chatten ([Ollama](ollama.de.md)).
 
 Fertig, wenn http://localhost:5678 lädt und du angemeldet bist.
 
 ### 5. Claude mit n8n verbinden
-→ [Claude ↔ n8n (MCP)](claude-mcp-n8n.de.md)
+Anleitung: → [Claude ↔ n8n (MCP)](claude-mcp-n8n.de.md)
 
-Instance-level MCP in n8n einschalten, das Configuration JSON in die `.mcp.json` deines Repos kopieren, auf `host.docker.internal:5678` zeigen lassen und die Firewall öffnen:
+1. Instance-level MCP in n8n einschalten (Settings > Instance-level MCP).
+2. Das Configuration JSON in das File `.mcp.json` deines Repos kopieren (Connect > API key > Configuration JSON kopieren).
+3. Auf `host.docker.internal:5678` zeigen lassen und die Sandbox-Firewall öffnen:
 
 ```bash
 sbx policy allow network host.docker.internal:5678
@@ -95,13 +101,4 @@ Wenn das klappt, sind alle fünf Schritte erledigt.
 ## Ausprobieren
 - Lass Claude dein Repo lesen und erklären, was es tut.
 - „Bau einen n8n-Workflow, der einen Webhook entgegennimmt und den Body loggt." Danach im n8n-UI anschauen.
-- `sbx tui` — CPU und Speicher der Sandbox beobachten, während Claude arbeitet.
-- Lass Claude etwas völlig Absurdes installieren. Es ist eine Sandbox; `sbx rm` wirft sie weg.
-- `git switch -c <dein-name>/tag-1` und Claude seinen ersten Commit machen lassen.
-
-## Typische Probleme
-**Schritt 3 hängt den falschen Ordner ein** — `sbx run claude` hängt das Verzeichnis ein, aus dem du es gestartet hast. Vorher ins Repo `cd`en.
-
-**Schritt 5 erreicht n8n nicht** — `localhost` in einer Sandbox ist die Sandbox. Nimm `host.docker.internal:5678` und führ den `sbx policy allow`-Befehl auf deiner Maschine aus.
-
-**Claude will sich in der Sandbox erneut anmelden** — Zugangsdaten liegen pro Sandbox auf dem Host. Einmal in der Box anmelden; danach hält `--resume` die Sitzung.
+- `sbx tui` — bestehende Sandboxes anschauen, eine ältere wieder starten und darin mit `claude --resume` an einer früheren Session weiterarbeiten.

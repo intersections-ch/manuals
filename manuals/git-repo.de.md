@@ -40,9 +40,9 @@ xclip -selection clipboard < ~/.ssh/id_ed25519.pub
 
 Jetzt registrieren, auf jeder Plattform gleich:
 
-**Azure DevOps** — User settings (oben rechts) → SSH public keys → New key → einfügen → Add.
+**Azure DevOps** — User settings (oben rechts) > SSH public keys > New key > einfügen > Add.
 
-**GitHub** — Settings → SSH and GPG keys → New SSH key → einfügen → Add.
+**GitHub** — Settings > SSH and GPG keys > New SSH key > einfügen > Add.
 
 Ein Key funktioniert für beides. Niemals `id_ed25519` ohne `.pub` einfügen — das ist der <mark>private</mark> Key und verlässt deine Maschine nie.
 
@@ -74,7 +74,7 @@ git clone git@github.com:<org>/<repo-name>.git
 Auf deiner **Maschine** klonen, nicht in einer Sandbox — die Sandbox hängt den Ordner ein, aus dem du sie startest, der Checkout muss also vorher existieren.
 
 ## Ausprobieren
-- `cd <repo-name> && git log --oneline -5` — es gibt Historie, der Klon hat also funktioniert.
+- `cd <repo-name> && git status` — es zeigt den Git-Status, der Klon hat also funktioniert. `git log --oneline -5` zeigt zusätzlich die Historie.
 - `git remote -v` — die URL beginnt mit `git@`, nicht mit `https://`.
 - `git switch -c <dein-name>/scratch`, eine leere Datei committen, `git push -u origin HEAD`, dann den Branch im ADO-Webinterface suchen.
 - `ssh-add -l` — zeigt die Keys, die dein Agent hält.
@@ -84,4 +84,4 @@ Auf deiner **Maschine** klonen, nicht in einer Sandbox — die Sandbox hängt de
 
 **Windows: `Could not open a connection to your authentication agent`** — den Agent einmalig in einer Admin-PowerShell starten: `Set-Service ssh-agent -StartupType Automatic; Start-Service ssh-agent`.
 
-**ADO-Klon hängt oder fragt nach einem Passwort** — die ADO-URL hat kein `.git` am Ende und nutzt `/v3/`. Kopier sie aus dem *Clone*-Button des Repos, Reiter **SSH** — nicht HTTPS.
+**ADO-Klon hängt oder fragt nach einem Passwort** — die ADO-URL hat kein `.git` am Ende und nutzt `/v3/`. Kopier sie aus dem *Clone*-Button des Repos > Reiter **SSH** — nicht HTTPS.

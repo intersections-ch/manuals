@@ -9,9 +9,12 @@ lang: de
 
 Führt offene LLMs lokal aus. Du lädst zwei Modelle herunter und chattest mit einem davon im Terminal.
 
+<mark>Achtung:</mark> Das gemma4-Modell ist fast 10 GB gross. Der Download dauert eine Weile — nur installieren, wenn du es wirklich brauchst, am besten während einer Pause. Die Chat-Modelle brauchen ausserdem viel RAM auf deinem Computer.
+
 | Modell | Wofür |
 |---|---|
-| `gemma4:e4b` | Chat — der Kurs-Standard, ~9.6 GB |
+| `gemma4:e2b` | Chat-Modell, ~3.5 GB |
+| `gemma4:e4b` | Grösseres Chat-Modell, ~9.6 GB |
 | `nomic-embed-text` | Embeddings — das, was [Qdrant](qdrant-docker.de.md) speichert, ~274 MB |
 
 ## Installation
@@ -36,23 +39,23 @@ curl -fsSL https://ollama.com/install.sh | sh
 Dann beide Modelle holen, auf jeder Plattform:
 
 ```bash
-ollama pull gemma4:e4b
+ollama pull gemma4:e2b
 ollama pull nomic-embed-text
 ```
 
 ## Prüfen
 ```bash
 ollama --version
-ollama run gemma4:e4b "Sag Hallo in fünf Wörtern."
+ollama run gemma4:e2b "Sag Hallo in fünf Wörtern."
 ```
 
 Gibt eine Version aus, dann eine Antwort. `ollama --version` muss auch ohne Modell sofort antworten — hängt es, läuft der Hintergrunddienst nicht.
 
 ## Ausprobieren
-- `ollama run gemma4:e4b` — interaktiv chatten, `/bye` zum Beenden.
+- `ollama run gemma4:e2b` — interaktiv chatten, `/bye` zum Beenden.
 - `ollama list` — zeigt, was auf der Platte liegt. `ollama rm <modell>` gibt den Platz wieder frei.
 - `curl http://localhost:11434/api/tags` — dieselbe Liste über die HTTP-API, so sprechen andere Tools mit Ollama.
-- `ollama run gemma4:e4b "Fasse das zusammen:" < datei.txt` — eine Datei hineinpipen.
+- `ollama run gemma4:e2b "Fasse das zusammen:" < datei.txt` — eine Datei hineinpipen.
 - `curl http://localhost:11434/api/embeddings -d '{"model":"nomic-embed-text","prompt":"hallo"}'` — 768 Zahlen. Genau die landen später in <mark>Qdrant</mark>.
 
 ## Typische Probleme

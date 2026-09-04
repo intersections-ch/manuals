@@ -44,7 +44,7 @@ curl http://localhost:6333/collections
 Returns `{"result":{"collections":[]},"status":"ok",...}` — empty is correct, you haven't written anything yet. The dashboard is at http://localhost:6333/dashboard.
 
 ## Try it
-- Open http://localhost:6333/dashboard → **Collections**. Empty for now; this is where you check your work later.
+- Open http://localhost:6333/dashboard > **Collections**. Empty for now; this is where you check your work later.
 - Create one by hand and delete it again:
   ```bash
   curl -X PUT http://localhost:6333/collections/test -H 'Content-Type: application/json' -d '{"vectors":{"size":768,"distance":"Cosine"}}'

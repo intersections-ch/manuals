@@ -5,6 +5,17 @@ Course installation manuals. Plain markdown, rendered by GitHub (repo view) and 
 ## Audience
 Technical participants. Give commands, not explanations of terminals. Brevity always.
 
+## Tone
+- Friendly and concrete, never clever. Course context is fine ("ask one of the instructors").
+- UI navigation is a `>` breadcrumb with the literal labels: `Settings > Instance-level MCP > Enable MCP access`.
+  `→` is reserved for links to other manuals and for node/data chains.
+- Anything with more than one action becomes a numbered list, not a sentence.
+- A link to another manual gets a label: `Manual: → [Claude Sandbox](claude-sandbox.md)`.
+- Big downloads get an upfront `<mark>Careful:</mark>` / `<mark>Achtung:</mark>` line: size, that it takes a
+  while, and to do it during a break.
+- Default to the smaller/cheaper option (`gemma4:e2b`); list the bigger one as available, not as the default.
+- "Done when …" criteria are observable and lenient — `git status` prints something, not `git log` shows history.
+
 ## Manual template (`manuals/<slug>.md`)
 
 Every manual is a pair: `manuals/<slug>.md` (English) and `manuals/<slug>.de.md` (German).

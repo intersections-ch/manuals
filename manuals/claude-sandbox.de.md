@@ -45,12 +45,9 @@ Ab- und wieder anmelden, damit die `kvm`-Gruppe greift. Ubuntu 24.04 oder neuer.
 
 Danach auf jeder Plattform bei beiden anmelden:
 
-```bash
-sbx login
-claude
-```
-
-`sbx login` öffnet den Browser für Docker. `claude` fragt nach der Anmeldeart — nimm dein <mark>Abo</mark> (Pro oder Max), keinen API-Key. `/exit`, sobald du angemeldet bist.
+1. `sbx login` — öffnet den Browser. Mit deinem Docker-Account anmelden.
+2. `claude` — startet Claude Code.
+3. Innerhalb von Claude: `/login` > mit deinem <mark>Abo</mark> (Pro oder Max) anmelden, nicht mit einem API-Key. `/exit`, wenn du fertig bist.
 
 ## Prüfen
 ```bash

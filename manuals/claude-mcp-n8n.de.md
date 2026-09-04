@@ -13,9 +13,9 @@ Verbindet Claude über MCP mit deinem lokalen n8n, damit Claude deine Workflows 
 
 Auf allen drei Plattformen gleich — die Arbeit passiert im n8n-UI und in zwei Dateien.
 
-**1. MCP in n8n einschalten.** http://localhost:5678 → Settings → **Instance-level MCP** → *Enable MCP access*. Braucht n8n 2.33 oder neuer.
+**1. MCP in n8n einschalten.** http://localhost:5678 > Settings > **Instance-level MCP** > *Enable MCP access*. Braucht n8n 2.33 oder neuer.
 
-**2. Konfiguration kopieren.** Unter *Connection details* → **Connect** → Reiter **API key**. n8n erzeugt ein Token und zeigt einen ausgefüllten Configuration-JSON-Block. Jetzt kopieren — sobald du den Reiter verlässt, ist das Token maskiert und du musst es rotieren, um wieder eines zu sehen.
+**2. Konfiguration kopieren.** Unter *Connection details* > **Connect** > Reiter **API key**. n8n erzeugt ein Token und zeigt einen ausgefüllten Configuration-JSON-Block. Jetzt kopieren — sobald du den Reiter verlässt, ist das Token maskiert und du musst es rotieren, um wieder eines zu sehen.
 
 **3. In `.mcp.json` einfügen**, im Wurzelverzeichnis deines Repos. Datei anlegen, falls sie fehlt. Danach den Host auf `host.docker.internal:5678` ändern, denn in der Sandbox ist `localhost` die Sandbox selbst:
 
@@ -53,7 +53,7 @@ In Claude Code:
 `n8n` erscheint als <mark>connected</mark>. Dann frag: `Liste meine n8n-Workflows auf.`
 
 ## Ausprobieren
-- `/mcp` → `n8n` auswählen → die angebotenen Tools durchsehen.
+- `/mcp` > `n8n` auswählen > die angebotenen Tools durchsehen.
 - „Liste meine n8n-Workflows auf und sag mir, was jeder davon tut."
 - „Bau mir einen n8n-Workflow, der einen Webhook entgegennimmt und den Body in eine Datei schreibt." Danach http://localhost:5678 öffnen und anschauen, was entstanden ist.
 - „Führ den Workflow *X* aus und zeig mir das Ergebnis."

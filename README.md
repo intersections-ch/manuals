@@ -8,9 +8,11 @@ permalink: /
 
 **Sprache:** [Deutsch](README.de.md)
 
+> The markdown files for these manuals live here: **[github.com/intersections-ch/manuals](https://github.com/intersections-ch/manuals)**
+
 New here? Start with [Basic Setup](manuals/basic-setup.md) — it walks the other manuals in order.
 Otherwise pick one, follow it, try the things at the end. Done early? Start the next one.
-Stuck? Ask Claude — paste the error, it usually knows.
+Stuck? Ask Claude — paste the error, it usually knows. Still stuck? Ask one of the instructors.
 
 | Manual | What you get | Requires |
 |---|---|---|
@@ -19,8 +21,9 @@ Stuck? Ask Claude — paste the error, it usually knows.
 | [Git Repo Access](manuals/git-repo.md) | SSH key + the course repo on your machine | – |
 | [Qdrant on Docker](manuals/qdrant-docker.md) | Local vector database | Docker, Ollama |
 | [n8n on Docker](manuals/n8n-docker.md) | Local automation server | Docker, Qdrant |
+| [RAG in n8n](manuals/n8n-rag.md) | Two workflows: a chat agent with a memory | Qdrant, n8n |
 | [Claude ↔ n8n (MCP)](manuals/claude-mcp-n8n.md) | Claude talks to your n8n | n8n, Claude Sandbox |
-| [Ollama](manuals/ollama.md) | Local LLMs on your machine (`gemma4:e4b`, `nomic-embed-text`) | – |
+| [Ollama](manuals/ollama.md) | Local LLMs on your machine (`gemma4:e2b`, `nomic-embed-text`) | – |
 
 ## Order
 
@@ -32,6 +35,8 @@ graph LR
   sbx --> mcp[Claude ↔ n8n]
   n8n --> mcp
   qdrant[Qdrant on Docker] --> n8n
+  n8n --> rag[RAG in n8n]
+  qdrant --> rag
   ollama[Ollama] --> qdrant
   docker[Docker] --> sbx
   docker --> qdrant

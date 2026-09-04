@@ -9,6 +9,8 @@ lang: de
 
 Selbst gehostete Automatisierungsplattform. Du startest sie in einem Container und meldest dich unter http://localhost:5678 an.
 
+<mark>Achtung:</mark> Das Ollama-Image ist über 3 GB gross, die Modelle darauf nochmals. Hol sie am besten während einer Pause und nicht, während die Klasse wartet.
+
 Wir nutzen den Kurs-Stack unter [intersections-ch/docker-n8n-ollama-qdrant](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) — n8n, [Qdrant](qdrant-docker.de.md) und [Ollama](ollama.de.md) als drei separate Compose-Dateien in einem gemeinsamen Docker-Netzwerk.
 
 ## Installation
@@ -45,7 +47,7 @@ docker compose -f docker-compose.n8n.yml up -d
 docker exec -it ollama ollama pull nomic-embed-text
 ```
 
-Ollama ist ein Image von über 3 GB und braucht seine Zeit. `-f` steht **vor** dem Unterbefehl. `nomic-embed-text` ist das Embedding-Modell, das Qdrant braucht; für ein Chat-Modell im Container zusätzlich `docker exec -it ollama ollama pull gemma4:e4b`.
+Ollama ist ein Image von über 3 GB und braucht seine Zeit. `-f` steht **vor** dem Unterbefehl. `nomic-embed-text` ist das Embedding-Modell, das Qdrant braucht; für ein Chat-Modell im Container zusätzlich `docker exec -it ollama ollama pull gemma4:e2b`.
 
 ## Prüfen
 ```bash
@@ -63,8 +65,8 @@ docker compose -f docker-compose.n8n.yml ps
 ## Ausprobieren
 - Owner-Konto unter http://localhost:5678 anlegen.
 - Neuer Workflow → **Manual Trigger** → **Code**-Node, der `{ hello: "world" }` zurückgibt → **Execute workflow**.
-- Ollama-Credential anlegen mit Base URL <mark>`http://ollama:11434`</mark> — nicht `localhost`.
-- Qdrant-Credential anlegen mit URL `http://qdrant:6333`, API-Key leer lassen.
+- Credentials > new > **Ollama**, Base URL <mark>`http://ollama:11434`</mark> — nicht `localhost`.
+- Credentials > new > **Qdrant**, URL `http://qdrant:6333`, API-Key leer lassen.
 - `docker compose -f docker-compose.n8n.yml logs -f` laufen lassen, während du einen Workflow ausführst.
 
 ## Typische Probleme
