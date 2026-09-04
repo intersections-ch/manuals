@@ -7,7 +7,12 @@ lang: en
 
 > **Requires:** nothing · **Sprache:** [Deutsch](ollama.de.md)
 
-Runs open LLMs locally. You'll pull a model and chat with it from the terminal.
+Runs open LLMs locally. You'll pull two models and chat with one of them from the terminal.
+
+| Model | For |
+|---|---|
+| `gemma4:e4b` | chat — the course default, ~9.6 GB |
+| `nomic-embed-text` | embeddings — what [Qdrant](qdrant-docker.md) stores, ~274 MB |
 
 ## Install
 
@@ -28,26 +33,31 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 <!-- #TODO verify the macOS cask name — Homebrew renamed `ollama` to `ollama-app`; the old name still resolves on some installs. -->
 
+Then pull both models, on every platform:
+
+```bash
+ollama pull gemma4:e4b
+ollama pull nomic-embed-text
+```
+
 ## Verify
 ```bash
 ollama --version
-ollama run llama3.2 "Say hi in five words."
+ollama run gemma4:e4b "Say hi in five words."
 ```
 
-The first run downloads the model (~2 GB), then prints an answer. `ollama --version` alone must answer even when nothing is downloaded — if it hangs, the background service isn't running.
-
-<!-- #TODO pick the model the course actually uses and replace llama3.2 everywhere in this file. -->
+Prints a version, then an answer. `ollama --version` alone must answer even when nothing is downloaded — if it hangs, the background service isn't running.
 
 ## Try it
-- `ollama run llama3.2` — chat interactively, `/bye` to leave.
+- `ollama run gemma4:e4b` — chat interactively, `/bye` to leave.
 - `ollama list` — see what's on disk. `ollama rm <model>` frees the space again.
-- `ollama pull nomic-embed-text` — the embedding model the <mark>n8n</mark> stack needs later.
 - `curl http://localhost:11434/api/tags` — the same list over the HTTP API, which is how other tools talk to it.
-- `ollama run llama3.2 "Summarise this:" < some-file.txt` — pipe a file in.
+- `ollama run gemma4:e4b "Summarise this:" < some-file.txt` — pipe a file in.
+- `curl http://localhost:11434/api/embeddings -d '{"model":"nomic-embed-text","prompt":"hello"}'` — 768 numbers. That is what <mark>Qdrant</mark> ends up storing.
 
 ## Common problems
 **`port 11434 already in use`** — Ollama is already running (menu bar on macOS, tray on Windows, `systemctl status ollama` on Linux). Use the running one.
 
-**The model answers very slowly or the machine swaps** — the model is bigger than your RAM. Pull a smaller tag: `ollama run llama3.2:1b`.
+**`gemma4:e4b` answers very slowly or the machine swaps** — it wants ~16 GB of RAM. Use the smaller variant: `ollama run gemma4:e2b`.
 
 **`ollama: command not found` on macOS after installing the app** — open the Ollama app once; it installs the CLI on first launch.

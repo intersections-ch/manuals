@@ -17,9 +17,10 @@ Stuck? Ask Claude — paste the error, it usually knows.
 | [Basic Setup](manuals/basic-setup.md) | The whole course environment, in order | – |
 | [Claude Sandbox](manuals/claude-sandbox.md) | Claude Code in an isolated Docker box | Docker |
 | [Git Repo Access](manuals/git-repo.md) | SSH key + the course repo on your machine | – |
-| [n8n on Docker](manuals/n8n-docker.md) | Local automation server | Docker |
+| [Qdrant on Docker](manuals/qdrant-docker.md) | Local vector database | Docker, Ollama |
+| [n8n on Docker](manuals/n8n-docker.md) | Local automation server | Docker, Qdrant |
 | [Claude ↔ n8n (MCP)](manuals/claude-mcp-n8n.md) | Claude talks to your n8n | n8n, Claude Sandbox |
-| [Ollama](manuals/ollama.md) | Local LLMs on your machine | – |
+| [Ollama](manuals/ollama.md) | Local LLMs on your machine (`gemma4:e4b`, `nomic-embed-text`) | – |
 
 ## Order
 
@@ -30,9 +31,11 @@ graph LR
   setup --> n8n[n8n on Docker]
   sbx --> mcp[Claude ↔ n8n]
   n8n --> mcp
+  qdrant[Qdrant on Docker] --> n8n
+  ollama[Ollama] --> qdrant
   docker[Docker] --> sbx
+  docker --> qdrant
   docker --> n8n
-  ollama[Ollama]
 ```
 
 Git, a terminal and a code editor are assumed. Docker isn't — see the note at the top of each manual that needs it.

@@ -17,9 +17,10 @@ Hängen geblieben? Frag Claude — Fehlermeldung reinkopieren, meistens weiss es
 | [Basis-Setup](manuals/basic-setup.de.md) | Die ganze Kursumgebung, der Reihe nach | – |
 | [Claude Sandbox](manuals/claude-sandbox.de.md) | Claude Code in einer isolierten Docker-Box | Docker |
 | [Git-Repo-Zugang](manuals/git-repo.de.md) | SSH-Key + das Kurs-Repo auf deiner Maschine | – |
-| [n8n auf Docker](manuals/n8n-docker.de.md) | Lokaler Automatisierungsserver | Docker |
+| [Qdrant auf Docker](manuals/qdrant-docker.de.md) | Lokale Vektordatenbank | Docker, Ollama |
+| [n8n auf Docker](manuals/n8n-docker.de.md) | Lokaler Automatisierungsserver | Docker, Qdrant |
 | [Claude ↔ n8n (MCP)](manuals/claude-mcp-n8n.de.md) | Claude spricht mit deinem n8n | n8n, Claude Sandbox |
-| [Ollama](manuals/ollama.de.md) | Lokale LLMs auf deiner Maschine | – |
+| [Ollama](manuals/ollama.de.md) | Lokale LLMs auf deiner Maschine (`gemma4:e4b`, `nomic-embed-text`) | – |
 
 ## Reihenfolge
 
@@ -30,9 +31,11 @@ graph LR
   setup --> n8n[n8n auf Docker]
   sbx --> mcp[Claude ↔ n8n]
   n8n --> mcp
+  qdrant[Qdrant auf Docker] --> n8n
+  ollama[Ollama] --> qdrant
   docker[Docker] --> sbx
+  docker --> qdrant
   docker --> n8n
-  ollama[Ollama]
 ```
 
 Git, ein Terminal und ein Code-Editor werden vorausgesetzt. Docker nicht — siehe die Notiz oben in jedem Manual, das es braucht.

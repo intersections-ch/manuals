@@ -23,7 +23,9 @@ Fertig, wenn `claude --version` und `sbx --version` beide antworten.
 ### 2. Dein Repo auf deiner Maschine
 → [Git-Repo-Zugang](git-repo.de.md)
 
-SSH-Key erzeugen, bei GitHub oder Azure DevOps registrieren, `<repo-name>` klonen.
+SSH-Key erzeugen, bei **Azure DevOps** registrieren, dein Repo klonen.
+
+Ihr bekommt je ein eigenes Repo, benannt nach euch oder einem Kürzel, das am Kursmorgen freigeschaltet wird. `<repo-name>` ist in allen Manuals ein <mark>Platzhalter</mark> — nimm die URL, die du bekommst.
 
 Auf deiner Maschine klonen, **nicht** in einer Sandbox — Schritt 3 hängt den Ordner ein, den du bereits hast.
 
@@ -53,10 +55,12 @@ claude --dangerously-skip-permissions --resume
 
 deine letzte Konversation zurückholt und aufhört, für jeden Befehl nach Erlaubnis zu fragen. Vertretbar nur, weil es eine Sandbox ist.
 
-### 4. n8n auf Docker
-→ [n8n auf Docker](n8n-docker.de.md)
+### 4. Der n8n-Stack
+→ [Qdrant auf Docker](qdrant-docker.de.md) → [n8n auf Docker](n8n-docker.de.md)
 
-[Den Kurs-Stack](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) klonen, Qdrant, Ollama und n8n hochfahren, das Owner-Konto unter http://localhost:5678 anlegen.
+[Den Kurs-Stack](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) klonen und Qdrant, Ollama und n8n in dieser Reihenfolge hochfahren, dann das Owner-Konto unter http://localhost:5678 anlegen.
+
+Modelle: `nomic-embed-text` für Qdrant, `gemma4:e4b` fürs lokale Chatten ([Ollama](ollama.de.md)).
 
 Fertig, wenn http://localhost:5678 lädt und du angemeldet bist.
 
@@ -94,8 +98,6 @@ Wenn das klappt, sind alle fünf Schritte erledigt.
 - `sbx tui` — CPU und Speicher der Sandbox beobachten, während Claude arbeitet.
 - Lass Claude etwas völlig Absurdes installieren. Es ist eine Sandbox; `sbx rm` wirft sie weg.
 - `git switch -c <dein-name>/tag-1` und Claude seinen ersten Commit machen lassen.
-
-<!-- #TODO echten <repo-name> und Clone-URL eintragen und festhalten, ob der Kurs auf GitHub oder Azure DevOps läuft. -->
 
 ## Typische Probleme
 **Schritt 3 hängt den falschen Ordner ein** — `sbx run claude` hängt das Verzeichnis ein, aus dem du es gestartet hast. Vorher ins Repo `cd`en.

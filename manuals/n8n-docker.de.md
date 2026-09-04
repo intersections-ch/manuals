@@ -5,11 +5,11 @@ lang: de
 
 # n8n auf Docker
 
-> **Voraussetzungen:** Docker · **Language:** [English](n8n-docker.md)
+> **Voraussetzungen:** Docker · [Qdrant auf Docker](qdrant-docker.de.md) · **Language:** [English](n8n-docker.md)
 
 Selbst gehostete Automatisierungsplattform. Du startest sie in einem Container und meldest dich unter http://localhost:5678 an.
 
-Wir nutzen den Kurs-Stack unter [intersections-ch/docker-n8n-ollama-qdrant](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) — n8n, Qdrant und Ollama als drei separate Compose-Dateien in einem gemeinsamen Docker-Netzwerk.
+Wir nutzen den Kurs-Stack unter [intersections-ch/docker-n8n-ollama-qdrant](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) — n8n, [Qdrant](qdrant-docker.de.md) und [Ollama](ollama.de.md) als drei separate Compose-Dateien in einem gemeinsamen Docker-Netzwerk.
 
 ## Installation
 
@@ -45,7 +45,7 @@ docker compose -f docker-compose.n8n.yml up -d
 docker exec -it ollama ollama pull nomic-embed-text
 ```
 
-Ollama ist ein Image von über 3 GB und braucht seine Zeit. `-f` steht **vor** dem Unterbefehl.
+Ollama ist ein Image von über 3 GB und braucht seine Zeit. `-f` steht **vor** dem Unterbefehl. `nomic-embed-text` ist das Embedding-Modell, das Qdrant braucht; für ein Chat-Modell im Container zusätzlich `docker exec -it ollama ollama pull gemma4:e4b`.
 
 ## Prüfen
 ```bash
@@ -66,8 +66,6 @@ docker compose -f docker-compose.n8n.yml ps
 - Ollama-Credential anlegen mit Base URL <mark>`http://ollama:11434`</mark> — nicht `localhost`.
 - Qdrant-Credential anlegen mit URL `http://qdrant:6333`, API-Key leer lassen.
 - `docker compose -f docker-compose.n8n.yml logs -f` laufen lassen, während du einen Workflow ausführst.
-
-<!-- #TODO entscheiden, ob das Anthropic-Credential hier oder im MCP-Manual angelegt wird. -->
 
 ## Typische Probleme
 **`container name "/n8n" is already in use`** — ein anderer Stack belegt den Namen. In `docker-compose.n8n.yml` `name:`, `container_name:` und die **linke** Seite des Port-Mappings ändern (z. B. `5778:5678`). Für die anderen zwei Dateien gleich vorgehen.

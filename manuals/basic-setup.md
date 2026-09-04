@@ -23,7 +23,9 @@ Done when `claude --version` and `sbx --version` both answer.
 ### 2. Your repo on your machine
 → [Git Repo Access](git-repo.md)
 
-Make an SSH key, register it with GitHub or Azure DevOps, clone `<repo-name>`.
+Make an SSH key, register it with **Azure DevOps**, clone your repo.
+
+You each get your own repo, named after you or a tag you're given, opened on the morning of the course. `<repo-name>` everywhere in these manuals is a <mark>placeholder</mark> — use the URL you're handed.
 
 Clone on your machine, **not** in a sandbox — step 3 mounts the folder you already have.
 
@@ -53,10 +55,12 @@ claude --dangerously-skip-permissions --resume
 
 picks your last conversation back up and stops asking permission for every command. Only reasonable because it's a sandbox.
 
-### 4. n8n on Docker
-→ [n8n on Docker](n8n-docker.md)
+### 4. The n8n stack
+→ [Qdrant on Docker](qdrant-docker.md) → [n8n on Docker](n8n-docker.md)
 
-Clone [the course stack](https://github.com/intersections-ch/docker-n8n-ollama-qdrant), bring up Qdrant, Ollama and n8n, create the owner account at http://localhost:5678.
+Clone [the course stack](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) and bring up Qdrant, Ollama and n8n — in that order — then create the owner account at http://localhost:5678.
+
+Models: `nomic-embed-text` for Qdrant, `gemma4:e4b` if you want to chat locally ([Ollama](ollama.md)).
 
 Done when http://localhost:5678 loads and you're logged in.
 
@@ -94,8 +98,6 @@ If that works, all five steps are done.
 - `sbx tui` — watch the sandbox's CPU and memory while Claude works.
 - Ask Claude to install something absurd. It's a sandbox; `sbx rm` throws it away.
 - `git switch -c <your-name>/day-1` and let Claude commit its first change.
-
-<!-- #TODO fill in the real <repo-name> and clone URL, and say whether the class is on GitHub or Azure DevOps. -->
 
 ## Common problems
 **Step 3 mounts the wrong folder** — `sbx run claude` mounts the directory you ran it from. `cd` into the repo first.
