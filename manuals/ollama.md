@@ -6,11 +6,11 @@ slug: ollama
 
 # Ollama
 
-> **Requires:** nothing · **Sprache:** [Deutsch](ollama.de.md)
+> **Requires:** nothing · **Other Languages:** [Deutsch](ollama.de.md)
 
-Runs open LLMs locally. You'll pull two models and chat with one of them from the terminal.
+In this manual we install Ollama, which runs open language models directly on your computer instead of in the cloud. You will download two models and chat with one of them from the terminal.
 
-> **Careful:** the gemma4 model is nearly 10 GB. The download takes a while — only install it if you actually need it, and ideally during a break. The chat models also want a lot of RAM on your machine.
+> **Careful:** the gemma4 model is nearly 10 GB. The download takes a while — only install it if you actually need it, and ideally during a break. The chat models also need a considerable amount of RAM on your computer.
 
 | Model | For |
 |---|---|
@@ -37,7 +37,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 <!-- #TODO verify the macOS cask name — Homebrew renamed `ollama` to `ollama-app`; the old name still resolves on some installs. -->
 
-Then pull both models, on every platform:
+With Ollama installed, download the two models you need. This step is the same on every platform:
 
 ```bash
 ollama pull gemma4:e2b
@@ -50,18 +50,18 @@ ollama --version
 ollama run gemma4:e2b "Say hi in five words."
 ```
 
-Prints a version, then an answer. `ollama --version` alone must answer even when nothing is downloaded — if it hangs, the background service isn't running.
+You should see a version number, then a short answer from the model. `ollama --version` has to respond even when no model has been downloaded yet, so if that command hangs, the background service is not running.
 
-## Try it
+## Try it (optional)
 - `ollama run gemma4:e2b` — chat interactively, `/bye` to leave.
-- `ollama list` — see what's on disk. `ollama rm <model>` frees the space again.
+- `ollama list` — shows which models are stored locally. `ollama rm <model>` removes one and frees the space again.
 - `curl http://localhost:11434/api/tags` — the same list over the HTTP API, which is how other tools talk to it.
-- `ollama run gemma4:e2b "Summarise this:" < some-file.txt` — pipe a file in.
-- `curl http://localhost:11434/api/embeddings -d '{"model":"nomic-embed-text","prompt":"hello"}'` — 768 numbers. That is what <mark>Qdrant</mark> ends up storing.
+- `ollama run gemma4:e2b "Summarise this:" < some-file.txt` — passes the contents of a file to the model.
+- `curl http://localhost:11434/api/embeddings -d '{"model":"nomic-embed-text","prompt":"hello"}'` — returns 768 numbers. Those are exactly what <mark>Qdrant</mark> later stores.
 
 ## Common problems
-**`port 11434 already in use`** — Ollama is already running (menu bar on macOS, tray on Windows, `systemctl status ollama` on Linux). Use the running one.
+**`port 11434 already in use`** — Ollama is already running (menu bar on macOS, system tray on Windows, `systemctl status ollama` on Linux). Use that running instance rather than starting a second one.
 
-**`gemma4:e4b` answers very slowly or the machine swaps** — it wants ~16 GB of RAM. Use the smaller variant: `ollama run gemma4:e2b`.
+**`gemma4:e4b` answers very slowly** — the model needs around 16 GB of RAM, and below that the system starts swapping to disk. Use the smaller variant instead: `ollama run gemma4:e2b`.
 
-**`ollama: command not found` on macOS after installing the app** — open the Ollama app once; it installs the CLI on first launch.
+**`ollama: command not found` on macOS after installing the app** — open the Ollama app once. It installs the command line tool on first launch.

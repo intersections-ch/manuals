@@ -6,23 +6,23 @@ slug: git-repo
 
 # Git-Repo-Zugang
 
-> **Voraussetzungen:** keine · **Language:** [English](git-repo.md)
+> **Voraussetzungen:** keine · **Andere Sprachen:** [English](git-repo.md)
 
-Ein SSH-Key auf deiner Maschine, registriert bei Azure DevOps, damit du dein Kurs-Repo klonen und zurückpushen kannst.
+In diesem Manual erstellen wir einen SSH-Key auf deinem Computer und registrieren ihn bei Azure DevOps, damit du dein Kurs-Repository klonen und deine Arbeit zurückpushen kannst.
 
-> **Achtung:** jede URL hier unten ist ein <mark>Platzhalter</mark>. Du bekommst dein eigenes Repo — benannt nach dir oder einem Kürzel, das du erhältst — am Morgen des Kurstags. Setz die URL ein, die du bekommst, für `<org>`, `<project>` und `<repo-name>`; rate sie nicht.
+> **Achtung:** jede URL hier unten ist ein <mark>Platzhalter</mark>. Du bekommst dein eigenes Repo für den Kurs. Setz die URL ein, die du bekommst, für `<org>`, `<project>` und `<repo-name>`.
 
-Der Kurs läuft auf **Azure DevOps**. Die GitHub-Befehle stehen trotzdem hier, weil du sie beim ersten Klon von irgendetwas anderem brauchen wirst.
+Der Kurs selbst läuft auf **Azure DevOps**, deshalb stehen diese Befehle zuerst. Die GitHub-Entsprechungen sind ebenfalls aufgeführt, weil du sie beim ersten Klon ausserhalb des Kurses brauchen wirst.
 
 ## Installation
 
-Key erzeugen. Überall derselbe Befehl — dreimal Enter für Standardpfad und keine Passphrase.
+Zuerst erzeugst du einen Key. Der Befehl ist überall derselbe; dreimal Enter übernimmt den Standardpfad und keine Passphrase.
 
 ```bash
 ssh-keygen -t ed25519 -C "du@example.com"
 ```
 
-Dann die **öffentliche** Hälfte in die Zwischenablage kopieren:
+Danach kopierst du die **öffentliche** Hälfte des Keys in die Zwischenablage. Das ist der einzige Schritt, der sich je nach Betriebssystem unterscheidet:
 
 ### macOS
 ```bash
@@ -39,20 +39,20 @@ Get-Content ~\.ssh\id_ed25519.pub | Set-Clipboard
 xclip -selection clipboard < ~/.ssh/id_ed25519.pub
 ```
 
-Jetzt registrieren, auf jeder Plattform gleich:
+Jetzt registrierst du diesen Key beim jeweiligen Dienst. Die Schritte sind auf jeder Plattform dieselben:
 
 **Azure DevOps** — User settings (oben rechts) > SSH public keys > New key > einfügen > Add.
 
 **GitHub** — Settings > SSH and GPG keys > New SSH key > einfügen > Add.
 
-Ein Key funktioniert für beides. Niemals `id_ed25519` ohne `.pub` einfügen — das ist der <mark>private</mark> Key und verlässt deine Maschine nie.
+Ein einziger Key funktioniert für beide Dienste. Füg niemals `id_ed25519` ohne die Endung `.pub` ein: Diese Datei ist der <mark>private</mark> Key und sollte deinen Computer nie verlassen.
 
 ## Prüfen
 ```bash
 ssh -T git@ssh.dev.azure.com
 ```
 
-Antwortet `shell request failed on channel 0`. Das gilt als Erfolg — ADO hat dich authentifiziert und hat schlicht keine Shell. Beim ersten Mal die Host-Key-Frage mit `yes` beantworten.
+Das antwortet mit `shell request failed on channel 0`, und das gilt als Erfolg: Azure DevOps hat dich authentifiziert und stellt schlicht keine Shell bereit. Beim ersten Verbinden bestätigst du die Host-Key-Frage mit `yes`.
 
 GitHub antwortet zum Vergleich `Hi <du>! You've successfully authenticated, but GitHub does not provide shell access.`:
 
@@ -60,7 +60,7 @@ GitHub antwortet zum Vergleich `Hi <du>! You've successfully authenticated, but 
 ssh -T git@github.com
 ```
 
-Dann das Repo klonen, das du bekommen hast:
+Funktioniert die Authentifizierung, klonst du das Repository, das du bekommen hast:
 
 ```bash
 git clone git@ssh.dev.azure.com:v3/<org>/<project>/<repo-name>
@@ -72,17 +72,17 @@ Die GitHub-Form, für alles andere:
 git clone git@github.com:<org>/<repo-name>.git
 ```
 
-Auf deiner **Maschine** klonen, nicht in einer Sandbox — die Sandbox hängt den Ordner ein, aus dem du sie startest, der Checkout muss also vorher existieren.
+Klone auf deinem **Computer**, nicht in einer Sandbox. Eine Sandbox entsteht rund um den Ordner, aus dem du sie startest, der Checkout muss also vorher vorhanden sein.
 
-## Ausprobieren
-- `cd <repo-name> && git status` — es zeigt den Git-Status, der Klon hat also funktioniert. `git log --oneline -5` zeigt zusätzlich die Historie.
-- `git remote -v` — die URL beginnt mit `git@`, nicht mit `https://`.
+## Ausprobieren (optional)
+- `cd <repo-name> && git status` — zeigt es den Git-Status an, hat der Klon funktioniert. `git log --oneline -5` zeigt zusätzlich die Historie.
+- `git remote -v` — die URL sollte mit `git@` beginnen und nicht mit `https://`.
 - `git switch -c <dein-name>/scratch`, eine leere Datei committen, `git push -u origin HEAD`, dann den Branch im ADO-Webinterface suchen.
-- `ssh-add -l` — zeigt die Keys, die dein Agent hält.
+- `ssh-add -l` — listet die Keys auf, die dein SSH-Agent aktuell hält.
 
 ## Typische Probleme
-**`Permission denied (publickey)`** — der Key ist nicht registriert, oder du hast die private Hälfte kopiert. Kopierbefehl mit `.pub` wiederholen und neu hinterlegen.
+**`Permission denied (publickey)`** — entweder ist der Key nicht registriert, oder es wurde versehentlich die private Hälfte kopiert. Wiederhol den Kopierbefehl mit `.pub` und hinterleg ihn erneut.
 
-**Windows: `Could not open a connection to your authentication agent`** — den Agent einmalig in einer Admin-PowerShell starten: `Set-Service ssh-agent -StartupType Automatic; Start-Service ssh-agent`.
+**Windows: `Could not open a connection to your authentication agent`** — der SSH-Agent läuft nicht. Starte ihn einmalig in einer Admin-PowerShell: `Set-Service ssh-agent -StartupType Automatic; Start-Service ssh-agent`.
 
-**ADO-Klon hängt oder fragt nach einem Passwort** — die ADO-URL hat kein `.git` am Ende und nutzt `/v3/`. Kopier sie aus dem *Clone*-Button des Repos > Reiter **SSH** — nicht HTTPS.
+**Der Azure-DevOps-Klon hängt oder fragt nach einem Passwort** — diese URL hat kein `.git` am Ende und nutzt `/v3/`. Kopier sie aus dem *Clone*-Button des Repositories > Reiter **SSH**, nicht HTTPS.

@@ -24,11 +24,11 @@
 - slug: git-repo
   en:
     title: Git Repo Access
-    desc: SSH key + the course repo on your machine
+    desc: SSH key + the course repo on your computer
     requires: "—"
   de:
     title: Git-Repo-Zugang
-    desc: SSH-Key + das Kurs-Repo auf deiner Maschine
+    desc: SSH-Key + das Kurs-Repo auf deinem Computer
     requires: "—"
 
 - slug: qdrant-docker
@@ -74,9 +74,9 @@
 - slug: ollama
   en:
     title: Ollama
-    desc: "Local LLMs on your machine (gemma4:e2b, nomic-embed-text)"
+    desc: "Local LLMs on your computer (gemma4:e2b, nomic-embed-text)"
     requires: "—"
   de:
     title: Ollama
-    desc: "Lokale LLMs auf deiner Maschine (gemma4:e2b, nomic-embed-text)"
+    desc: "Lokale LLMs auf deinem Computer (gemma4:e2b, nomic-embed-text)"
     requires: "—"

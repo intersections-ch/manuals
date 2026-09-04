@@ -15,6 +15,26 @@ Technical participants. Give commands, not explanations of terminals. Brevity al
   while, and to do it during a break.
 - Default to the smaller/cheaper option (`gemma4:e2b`); list the bigger one as available, not as the default.
 - "Done when …" criteria are observable and lenient — `git status` prints something, not `git log` shows history.
+- Every manual opens with "In this manual we …" / "In diesem Manual …", naming what gets set up and why.
+- Connected prose, not telegram style. Short is right; clipped is not. Sentences may carry a "because",
+  "so that" or "then" — but the result stays under +20% of the terse version.
+
+## Vocabulary
+Established terms — reuse them instead of inventing synonyms, and keep the register professional.
+
+| Not this | This |
+|---|---|
+| deine Maschine, dein Rechner / your machine | dein Computer / your computer |
+| die Box / the box | die Sandbox / the sandbox |
+| der Rest der Platte | der Rest des Computers |
+| auf der Platte liegen / on disk | lokal gespeichert / stored locally |
+| wirft dich in eine Shell / drops you into | öffnet eine Shell / opens a shell |
+| ein Loch in der Firewall | eine einzelne Stelle in der Firewall |
+| Fehlermeldung reinkopieren | die Fehlermeldung einfügen |
+| die Maschine swappt | lagert auf die Festplatte aus |
+| n8n-UI | n8n-Oberfläche / the n8n interface |
+| gratis | kostenlos |
+| Repo (in prose) | Repository |
 
 ## Manual template (`manuals/<slug>.md`)
 
@@ -30,7 +50,7 @@ lang: en
 
 # <Name>
 
-> **Requires:** [<Manual>](<slug>.md) · or "nothing" · (git/terminal/editor are assumed, Docker is not) · **Sprache:** [Deutsch](<slug>.de.md)
+> **Requires:** [<Manual>](<slug>.md) · or "nothing" · (git/terminal/editor are assumed, Docker is not) · **Other Languages:** [Deutsch](<slug>.de.md)
 
 One or two sentences: what this is and why we install it.
 
@@ -61,11 +81,11 @@ One command that proves it works, and what the output should look like.
 Only if they exist. Error → fix. Max 3.
 ````
 
-The German twin uses `lang: de`, German headings (`Installation`, `Prüfen`, `Ausprobieren`,
+The German twin uses `lang: de`, German headings (`Installation`, `Prüfen`, `Ausprobieren (optional)`,
 `Typische Probleme`), links to German siblings, and swaps the header link:
 
 ```markdown
-> **Voraussetzungen:** [<Manual>](<slug>.de.md) · **Language:** [English](<slug>.md)
+> **Voraussetzungen:** [<Manual>](<slug>.de.md) · **Andere Sprachen:** [English](<slug>.md)
 ```
 
 German is informal (*du*) and Swiss (`ss`, never `ß`).

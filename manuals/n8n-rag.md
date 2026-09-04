@@ -7,15 +7,15 @@ steps: true
 
 # RAG in n8n
 
-> **Requires:** [Qdrant on Docker](qdrant-docker.md) · [n8n on Docker](n8n-docker.md) · **Sprache:** [Deutsch](n8n-rag.de.md)
+> **Requires:** [Qdrant on Docker](qdrant-docker.md) · [n8n on Docker](n8n-docker.md) · **Other Languages:** [Deutsch](n8n-rag.de.md)
 
-Two workflows that give a chat agent a memory. The first takes facts you type and stores them as vectors in Qdrant; the second answers questions by looking those facts up first. That loop — retrieve, then generate — is the whole idea of RAG.
+In this manual we build two workflows that together give a chat agent a memory. The first takes facts you type and stores them as vectors in Qdrant; the second answers questions by looking those facts up before replying. That loop — retrieve first, then generate — is the whole idea behind RAG.
 
-Everything happens in the n8n UI at http://localhost:5678. No OS differences.
+Everything happens in the n8n interface at http://localhost:5678, so there are no differences between operating systems.
 
 ## Install
 
-First, the collection. Both workflows write to and read from the same one, and `768` is <mark>`nomic-embed-text`</mark>'s dimension:
+Start by creating the collection. Both workflows read from and write to the same one, and `768` is the dimension of <mark>`nomic-embed-text`</mark>:
 
 ```bash
 curl -X PUT http://localhost:6333/collections/facts \
@@ -23,7 +23,7 @@ curl -X PUT http://localhost:6333/collections/facts \
   -d '{"vectors":{"size":768,"distance":"Cosine"}}'
 ```
 
-You need two credentials, once, reused by both workflows. Use the **internal** hostnames — inside the n8n container `localhost` is n8n itself:
+You also need two credentials, created once and reused by both workflows. Use the **internal** hostnames, because inside the n8n container `localhost` refers to n8n itself:
 
 | Credential | Setting |
 |---|---|
@@ -32,14 +32,14 @@ You need two credentials, once, reused by both workflows. Use the **internal** h
 
 ### 1. Remember — the ingest workflow
 
-New workflow, name it `Remember`. Four nodes:
+Create a new workflow and name it `Remember`. It consists of four nodes:
 
 1. **When chat message received** (Chat Trigger) — the starting node.
 2. **Qdrant Vector Store** — Operation Mode <mark>**Insert Documents**</mark>, Qdrant Collection `facts`.
 3. On the vector store's **Embedding** connector: **Embeddings Ollama** — model `nomic-embed-text`.
 4. On its **Document** connector: **Default Data Loader** — Type of Data `JSON`, Mode `Load Specific Data`, Data <code>&#123;&#123; $json.chatInput &#125;&#125;</code>. Give it a **Recursive Character Text Splitter** with chunk size `1000`, overlap `200`.
 
-Save, then open the chat panel and type a few facts it couldn't know:
+Save the workflow, then open the chat panel and type in a few facts the model has no way of knowing:
 
 ```
 Our office cat is called Bruno and he is fourteen years old.
@@ -51,16 +51,16 @@ The coffee machine on the second floor takes only 5 rappen coins.
 
 ### 2. Ask — the query workflow
 
-New workflow, name it `Ask`. Four nodes:
+Create a second workflow and name it `Ask`. It also consists of four nodes:
 
 1. **When chat message received** (Chat Trigger).
 2. **AI Agent** — defaults are fine.
 3. On the agent's **Chat Model** connector, pick one:
-   - **Anthropic Chat Model** — your own API key, newest Claude Sonnet in the dropdown. Better answers, needs credit.
-   - **Ollama Chat Model** — model `gemma4:e2b`. Free and local, but slower and noticeably weaker. `gemma4:e4b` answers better and wants ~16 GB of RAM.
+   - **Anthropic Chat Model** — uses your own API key with the newest Claude Sonnet from the dropdown. Better answers, but it needs credit.
+   - **Ollama Chat Model** — uses the model `gemma4:e2b`. This runs locally at no cost, but it is slower and noticeably weaker. `gemma4:e4b` answers better and needs around 16 GB of RAM.
 4. On the agent's **Tool** connector: another **Qdrant Vector Store**, Operation Mode <mark>**Retrieve Documents (As Tool for AI Agent)**</mark>, collection `facts`, Name `facts`, Description `Facts the user has taught me. Search here before answering anything about the office, people or places.` Give it its own **Embeddings Ollama** with `nomic-embed-text` — the same model as in workflow 1.
 
-The Description is not documentation. It is the only thing the agent reads when deciding whether to search, so write it as an instruction.
+The Description is not documentation. It is the only thing the agent reads when deciding whether to search at all, so write it as an instruction rather than as an explanation.
 
 ## Verify
 Open the chat panel on the `Ask` workflow:
@@ -69,21 +69,21 @@ Open the chat panel on the `Ask` workflow:
 How old is the office cat?
 ```
 
-Answers *fourteen*. It cannot have known that — it came back out of Qdrant. Confirm the round trip in http://localhost:6333/dashboard > **Collections** > `facts`: the points are there, each with your original sentence in its payload.
+The answer should be *fourteen*. The model cannot have known this on its own, so the fact must have come back out of Qdrant. You can confirm the round trip at http://localhost:6333/dashboard > **Collections** > `facts`, where the points are stored, each with your original sentence in its payload.
 
-## Try it
-- Teach it three more facts in `Remember`, then ask a question that needs two of them at once.
-- Ask something you never taught it. A good agent says it doesn't know; a bad Description makes it invent an answer.
-- Swap the Chat Model between Anthropic and Ollama and re-ask the same question. Same retrieved facts, visibly different answers.
-- Change the tool Description to `Unused.` and re-ask. The agent stops searching — that one field is the whole steering mechanism.
-- In the Qdrant dashboard, delete the collection and re-run `Ask`. Watch it fail, then re-create and re-ingest.
+## Try it (optional)
+- Teach the agent three more facts in `Remember`, then ask a question that requires two of them at once.
+- Ask about something you never taught it. A well described tool leads the agent to say it does not know, while a vague one leads it to invent an answer.
+- Swap the Chat Model between Anthropic and Ollama and ask the same question again. The retrieved facts stay the same, but the answers differ noticeably.
+- Change the tool Description to `Unused.` and ask again. The agent stops searching, which shows how much that single field controls.
+- In the Qdrant dashboard, delete the collection and run `Ask` again. Observe the failure, then re-create the collection and ingest the facts once more.
 
 ## Common problems
 **`Wrong input: Vector dimension error`** — the two workflows use different embedding models, or the collection was created with the wrong `size`. Both **Embeddings Ollama** nodes must say `nomic-embed-text`, and the collection must be `768`.
 
-**The agent answers from general knowledge and never searches** — the tool Description is too vague. Name the actual subject matter in it.
+**The agent answers from general knowledge and never searches** — the tool Description is too vague. Name the actual subject matter in it explicitly.
 
-**`connect ECONNREFUSED 127.0.0.1:6333`** — a credential still says `localhost`. Inside the container it must be `http://qdrant:6333` and `http://ollama:11434`.
+**`connect ECONNREFUSED 127.0.0.1:6333`** — one of the credentials still says `localhost`. Inside the container the addresses have to be `http://qdrant:6333` and `http://ollama:11434`.
 
 <!-- #TODO check whether the Qdrant node's "Collection Config" option can create the collection on first insert, which would drop the curl step. -->
 <!-- #TODO Default Data Loader field path: confirm <code>&#123;&#123; $json.chatInput &#125;&#125;</code> is still what the Chat Trigger emits in n8n 2.x. -->

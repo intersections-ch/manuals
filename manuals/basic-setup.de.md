@@ -7,9 +7,9 @@ steps: true
 
 # Basis-Setup
 
-> **Voraussetzungen:** keine · **Language:** [English](basic-setup.md)
+> **Voraussetzungen:** keine · **Andere Sprachen:** [English](basic-setup.md)
 
-Die komplette Kursumgebung in fünf Schritten: Claude Code in einer Sandbox, dein Repo ausgecheckt, n8n am Laufen, und beide miteinander verbunden. Jeder Schritt verlinkt ein vollständiges Manual — das durcharbeiten, dann hierher zurück.
+In diesem Manual richten wir die komplette Kursumgebung in fünf Schritten ein: Claude Code in einer Sandbox, dein Repository ausgecheckt, n8n am Laufen und beide miteinander verbunden. Jeder Schritt verlinkt ein vollständiges Manual, das du durcharbeitest und danach hierher zurückkehrst.
 
 Rechne mit 30–60 Minuten, überwiegend Downloads.
 
@@ -20,20 +20,20 @@ Für das Tutorial müssen einige Befehle im Terminal eingegeben werden. Wenn etw
 ### 1. Claude Code in einer Sandbox
 [Claude Sandbox](claude-sandbox.de.md)
 
-1. Claude-Code-CLI und Dockers `sbx` installieren, dann `sbx login` ausführen. Mit Docker Account anmelden.
+1. Claude-Code-CLI und Dockers `sbx` installieren, dann `sbx login` ausführen. Mit deinem Docker-Account anmelden.
 2. `sbx run claude` in einem Verzeichnis deiner Wahl ausführen. Dieses Verzeichnis wird zur Sandbox. Dein Git-Repo eignet sich dafür gut (siehe nächster Punkt).
 3. Innerhalb von Claude: `/login` > mit deiner Subscription anmelden.
 
-Fertig, wenn `claude --version` und `sbx --version` beide etwas ausgeben.
+Dieser Schritt ist fertig, wenn `claude --version` und `sbx --version` beide etwas ausgeben.
 
-### 2. Dein Repo auf deiner Maschine
+### 2. Dein Repository auf deinem Computer
 [Git-Repo-Zugang](git-repo.de.md)
 
-Führ `git clone <repo>` in deinem üblichen Arbeitsordner aus. Damit wird dein Repository auf deinen Rechner kopiert. (**Nicht** in einer Sandbox.)
+Führ `git clone <repo>` in deinem üblichen Arbeitsordner aus, um dein Repository auf deinen Computer zu kopieren. Mach das **ausserhalb** jeder Sandbox.
 
-Alle Teilnehmenden bekommen ein eigenes ADO-Git-Repository. `<repo-name>` ist in allen Manuals ein <mark>Platzhalter</mark> — nimm dort die URL, die zu deinem Repository führt.
+Du bekommst dein eigenes ADO-Git-Repository für den Kurs. `<repo-name>` ist in allen Manuals ein <mark>Platzhalter</mark> — setz dort die URL ein, die zu deinem Repository führt.
 
-Fertig, wenn `git status` innerhalb des geklonten Repositories den Git-Status anzeigt.
+Dieser Schritt ist fertig, wenn `git status` innerhalb des geklonten Repositories den Git-Status anzeigt.
 
 ### 3. Repo in der Sandbox öffnen
 
@@ -42,7 +42,7 @@ cd <repo-name>
 sbx run claude
 ```
 
-Der erste Lauf baut die Box und installiert Claude Code darin. Dieser Ordner — und nichts darüber — ist das, was Claude sieht.
+Der erste Lauf baut die Sandbox und installiert Claude Code darin. Von da an ist dieser Ordner alles, was Claude sieht; nichts darüber ist erreichbar.
 
 Falls nötig, mit `/login` in Claude Code einloggen.
 
@@ -53,22 +53,22 @@ sbx tui
 sbx run shell
 ```
 
-`sbx tui` ist das Dashboard der laufenden Sandboxes. `sbx run shell` wirft dich in eine normale Shell derselben Box, wo
+`sbx tui` ist das Dashboard der laufenden Sandboxes. `sbx run shell` öffnet eine normale Shell in derselben Sandbox, wo
 
 ```bash
 claude --dangerously-skip-permissions --resume
 ```
 
-deine letzte Konversation zurückholt und aufhört, für jeden Befehl nach Erlaubnis zu fragen. Vertretbar nur, weil es eine Sandbox ist.
+deine letzte Konversation zurückholt und aufhört, für jeden Befehl nach Erlaubnis zu fragen. Das ist nur vertretbar, weil die Sandbox isoliert ist.
 
 ### 4. Der n8n-Stack
 [Qdrant auf Docker](qdrant-docker.de.md) [n8n auf Docker](n8n-docker.de.md)
 
-[Den Kurs-Stack](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) klonen und Qdrant, Ollama und n8n in dieser Reihenfolge hochfahren, dann das Owner-Konto unter http://localhost:5678 anlegen.
+[Den Kurs-Stack](https://github.com/intersections-ch/docker-n8n-ollama-qdrant) klonen und Qdrant, Ollama und n8n in dieser Reihenfolge starten, dann das Owner-Konto unter http://localhost:5678 anlegen.
 
-Modelle: `nomic-embed-text` für Qdrant, `gemma4:e2b` fürs lokale Chatten ([Ollama](ollama.de.md)).
+Du brauchst hier zwei Modelle: `nomic-embed-text` für Qdrant und `gemma4:e2b`, falls du zusätzlich lokal chatten möchtest ([Ollama](ollama.de.md)).
 
-Fertig, wenn http://localhost:5678 lädt und du angemeldet bist.
+Dieser Schritt ist fertig, wenn http://localhost:5678 lädt und du angemeldet bist.
 
 ### 5. Claude mit n8n verbinden
 [Claude ↔ n8n (MCP)](claude-mcp-n8n.de.md)
@@ -81,10 +81,10 @@ Fertig, wenn http://localhost:5678 lädt und du angemeldet bist.
 sbx policy allow network host.docker.internal:5678
 ```
 
-Fertig, wenn `/mcp` in Claude `n8n` als connected anzeigt.
+Dieser Schritt ist fertig, wenn `/mcp` in Claude `n8n` als connected anzeigt.
 
 ## Prüfen
-Alles auf einmal — aus deinem Repo-Ordner:
+Du kannst alles auf einmal prüfen. Führ aus deinem Repository-Ordner aus:
 
 ```bash
 sbx run shell
@@ -96,11 +96,9 @@ und in der Sandbox:
 claude --dangerously-skip-permissions --resume
 ```
 
-dann in Claude: `/mcp` zeigt `n8n` als connected, und `Liste meine n8n-Workflows auf.` liefert eine Antwort.
+Danach sollte `/mcp` in Claude `n8n` als connected zeigen, und `Liste meine n8n-Workflows auf.` sollte eine Antwort liefern. Wenn das klappt, sind alle fünf Schritte erledigt.
 
-Wenn das klappt, sind alle fünf Schritte erledigt.
-
-## Ausprobieren
-- Lass Claude dein Repo lesen und erklären, was es tut.
-- „Bau einen n8n-Workflow, der einen Webhook entgegennimmt und den Body loggt." Danach im n8n-UI anschauen.
-- `sbx tui` — bestehende Sandboxes anschauen, eine ältere wieder starten und darin mit `claude --resume` an einer früheren Session weiterarbeiten.
+## Ausprobieren (optional)
+- Lass Claude dein Repository lesen und erklären, was es tut.
+- „Bau einen n8n-Workflow, der einen Webhook entgegennimmt und den Body loggt." Danach das Ergebnis in der n8n-Oberfläche prüfen.
+- `sbx tui` — bestehende Sandboxes durchsehen, eine ältere wieder starten und darin mit `claude --resume` an einer früheren Session weiterarbeiten.

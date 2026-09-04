@@ -10,20 +10,20 @@ permalink: /de/
 
 > Die Markdown-Files der Anleitungen befinden sich hier: **[github.com/intersections-ch/manuals](https://github.com/intersections-ch/manuals)**
 
-Neu hier? Fang mit [Basis-Setup](manuals/basic-setup.de.md) an — es führt der Reihe nach durch die anderen Manuals.
-Sonst nimm eins, arbeite es durch und probier die Sachen am Ende aus. Früh fertig? Nimm das nächste.
-Hängen geblieben? Frag Claude — Fehlermeldung reinkopieren, meistens weiss es weiter. Immer noch hängen geblieben? Frag die Kursleitung.
+Neu hier? Fang mit [Basis-Setup](manuals/basic-setup.de.md) an, das der Reihe nach durch die anderen Manuals führt.
+Sonst nimm das Manual, das du brauchst, und arbeite es durch. Früh fertig? Nimm das nächste.
+Kommst du nicht weiter, füg die Fehlermeldung in Claude ein — meistens erkennt es das Problem. Hilft das nicht, wende dich an die Kursleitung.
 
 | Manual | Was du bekommst | Voraussetzungen |
 |---|---|---|
 | [Basis-Setup](manuals/basic-setup.de.md) | Die ganze Kursumgebung, der Reihe nach | — |
 | [Claude Sandbox](manuals/claude-sandbox.de.md) | Claude Code in einer isolierten Docker-Box | Docker |
-| [Git-Repo-Zugang](manuals/git-repo.de.md) | SSH-Key + das Kurs-Repo auf deiner Maschine | — |
+| [Git-Repo-Zugang](manuals/git-repo.de.md) | SSH-Key + das Kurs-Repo auf deinem Computer | — |
 | [Qdrant auf Docker](manuals/qdrant-docker.de.md) | Lokale Vektordatenbank | Docker, Ollama |
 | [n8n auf Docker](manuals/n8n-docker.de.md) | Lokaler Automatisierungsserver | Docker, Qdrant |
 | [RAG in n8n](manuals/n8n-rag.de.md) | Zwei Workflows: ein Chat-Agent mit Gedächtnis | Qdrant, n8n |
 | [Claude ↔ n8n (MCP)](manuals/claude-mcp-n8n.de.md) | Claude spricht mit deinem n8n | n8n, Claude Sandbox |
-| [Ollama](manuals/ollama.de.md) | Lokale LLMs auf deiner Maschine (gemma4:e2b, nomic-embed-text) | — |
+| [Ollama](manuals/ollama.de.md) | Lokale LLMs auf deinem Computer (gemma4:e2b, nomic-embed-text) | — |
 
 ## Reihenfolge
 

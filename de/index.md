@@ -4,7 +4,7 @@ lang: de
 layout: manuals
 permalink: /de/
 alt: /
-intro: "Neu hier? Fang mit Basis-Setup an — es führt der Reihe nach durch die anderen Manuals. Sonst nimm eins, arbeite es durch und probier die Sachen am Ende aus. Hängen geblieben? Frag Claude — Fehlermeldung reinkopieren, meistens weiss es weiter. Immer noch hängen geblieben? Frag die Kursleitung."
+intro: "Neu hier? Fang mit Basis-Setup an, das der Reihe nach durch die anderen Manuals führt. Sonst nimm das Manual, das du brauchst, und arbeite es durch. Kommst du nicht weiter, füg die Fehlermeldung in Claude ein — meistens erkennt es das Problem. Hilft das nicht, wende dich an die Kursleitung."
 repo_note: "Die Markdown-Files der Anleitungen befinden sich hier"
 repo_url: https://github.com/intersections-ch/manuals
 ---

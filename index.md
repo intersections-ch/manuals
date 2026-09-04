@@ -4,7 +4,7 @@ lang: en
 layout: manuals
 permalink: /
 alt: /de/
-intro: "New here? Start with Basic Setup — it walks the other manuals in order. Otherwise pick one, follow it, try the things at the end. Stuck? Ask Claude — paste the error, it usually knows. Still stuck? Ask one of the instructors."
+intro: "New here? Start with Basic Setup, which walks through the other manuals in order. Otherwise pick whichever one you need and work through it. If you get stuck, paste the error into Claude — it will usually recognise it. If that does not help, ask one of the instructors."
 repo_note: The markdown files for these manuals live here
 repo_url: https://github.com/intersections-ch/manuals
 ---
