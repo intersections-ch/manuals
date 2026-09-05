@@ -12,7 +12,9 @@ permalink: /de/
 
 Neu hier? Fang mit [Basis-Setup](manuals/basic-setup.de.md) an, das der Reihe nach durch die anderen Manuals führt.
 Sonst nimm das Manual, das du brauchst, und arbeite es durch. Früh fertig? Nimm das nächste.
-Kommst du nicht weiter, füg die Fehlermeldung in Claude ein — meistens erkennt es das Problem. Hilft das nicht, wende dich an die Kursleitung.
+Kommst du nicht weiter, wende dich an die Kursleitung oder frage einen Chatbot um Unterstützung. 
+Du kannst die Anleitungen unter `https://github.com/intersections-ch/manuals` herunterladen und als Kontext in einen Chatbot einfügen.
+Auch Verständnisfragen können oft von Chatbots gut beantwortet werden. 
 
 | Manual | Was du bekommst | Voraussetzungen |
 |---|---|---|

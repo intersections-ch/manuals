@@ -9,11 +9,13 @@ steps: true
 
 > **Requires:** nothing · **Other Languages:** [Deutsch](basic-setup.de.md)
 
-In this manual we set up the whole course environment in five steps: Claude Code in a sandbox, your repository checked out, n8n running, and the two connected to each other. Each step links to a full manual, so work through that one and then come back here.
+In this manual we set up the whole course environment in five steps: Claude Code in a sandbox, your repository checked out, n8n running, and the two connected to each other. 
+Each step links to a full manual, so work through that one and then come back here.
 
 Plan for 30–60 minutes, most of which is downloads.
 
-This tutorial has you type a fair number of terminal commands. If anything is unclear, just ask one of the instructors.
+This tutorial has you type a fair number of terminal commands. If anything is unclear, just ask one of the instructors or ask a chatbot of your choice. 
+Chatbots can usually also help with comprehension questions. 
 
 ## Install
 

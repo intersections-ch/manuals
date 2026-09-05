@@ -29,7 +29,7 @@ Dieser Schritt ist fertig, wenn `claude --version` und `sbx --version` beide etw
 ### 2. Dein Repository auf deinem Computer
 [Git-Repo-Zugang](git-repo.de.md)
 
-Führ `git clone <repo>` in deinem üblichen Arbeitsordner aus, um dein Repository auf deinen Computer zu kopieren. Mach das **ausserhalb** jeder Sandbox.
+Führe `git clone <repo>` in deinem üblichen Arbeitsordner aus, um dein Repository auf deinen Computer zu kopieren. Mach das **ausserhalb** jeder Sandbox.
 
 Du bekommst dein eigenes ADO-Git-Repository für den Kurs. `<repo-name>` ist in allen Manuals ein <mark>Platzhalter</mark> — setz dort die URL ein, die zu deinem Repository führt.
 

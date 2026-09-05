@@ -12,7 +12,10 @@ permalink: /
 
 New here? Start with [Basic Setup](manuals/basic-setup.md), which walks through the other manuals in order.
 Otherwise pick whichever one you need and work through it. Done early? Start the next one.
-If you get stuck, paste the error into Claude — it will usually recognise it. If that does not help, ask one of the instructors.
+If you get stuck, ask one of the instructors or ask the chatbot of your choice for help.
+You can download all the manual files at `https://github.com/intersections-ch/manuals` and provide it as context to your chatbot.
+Chatbots usually also do a good job at answering comprehension questions. 
+
 
 | Manual | What you get | Requires |
 |---|---|---|
