@@ -61,6 +61,7 @@ Führ auch das auf deinem Computer aus:
 
 ```bash
 sbx policy allow network host.docker.internal:5678
+sbx policy allow network localhost:5678
 ```
 
 ### 7. Claude neu starten
